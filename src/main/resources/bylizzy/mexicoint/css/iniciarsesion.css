@@ -1,0 +1,11 @@
+/**/
+.background-login {
+    -fx-background-color: linear-gradient(
+        to right,
+        #000000 0%,
+        #0D0C0C 8%,
+        #0D0C0C 59%,
+        #717171 70%,
+        #FFFFFF 100%
+    );
+}
