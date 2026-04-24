@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<HBox id="id_registrar_cliente" alignment="CENTER" minHeight="-Infinity" minWidth="1000.0" spacing="100.0" styleClass="background-registrar" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bylizzy.mexicoint.controllers.RegistrarController">
+   <children>
+      <StackPane id="id-contenedor-izq" HBox.hgrow="ALWAYS">
+         <children>
+            <ImageView id="id_img_logo" fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
+      <VBox id="id_contenedor_componente" alignment="CENTER">
+         <children>
+            <Pane id="id_componente_registrar_cliente" nodeOrientation="LEFT_TO_RIGHT">
+               <children>
+                  <VBox id="id_contenedor_registrar_cliente" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="412.0" spacing="36.0" styleClass="base-contenedor">
+                     <children>
+                        <Label id="id_titulo" text="Registrando">
+                           <font>
+                              <Font name="System Bold" size="48.0" />
+                           </font>
+                        </Label>
+                        <VBox id="id_contenedor_datos" prefHeight="145.0" prefWidth="365.0" spacing="14.0">
+                           <children>
+                              <TextFlow id="id_contenedor_parrafo_1" prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Text id="id-mensaje" strokeType="OUTSIDE" strokeWidth="0.0" text="Llena los siguientes campos con la información que se te pide y dale en “Continuar”.">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </TextFlow>
+                              <StackPane>
+                                 <children>
+                                    <GridPane id="id_data_3" fx:id="datos_paso_3" hgap="5.0" vgap="14.0" visible="false">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="100.5" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="274.5" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label styleClass="base-text-normal-1" text="Contraseña" />
+                                          <PasswordField fx:id="campo_contrasena" GridPane.columnIndex="1">
+                                             <styleClass>
+                                                <String fx:value="base-text-normal-1" />
+                                                <String fx:value="base-input" />
+                                             </styleClass>
+                                          </PasswordField>
+                                          <Label styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label styleClass="base-text-normal-1" text="Confirmar contraseña" GridPane.rowIndex="2" />
+                                          <PasswordField fx:id="campo_confirmar_contrasena" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <styleClass>
+                                                <String fx:value="base-text-normal-1" />
+                                                <String fx:value="base-input" />
+                                             </styleClass>
+                                          </PasswordField>
+                                          <Label styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                       </children>
+                                    </GridPane>
+                                    <GridPane id="id_data_2" fx:id="datos_paso_2" hgap="5.0" vgap="14.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="100.5" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="274.5" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="37.0" minHeight="12.5" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label styleClass="base-text-normal-1" text="Calle" />
+                                          <TextField fx:id="campo_calle" promptText="Av. Insurgentes Sur" GridPane.columnIndex="1">
+                                             <styleClass>
+                                                <String fx:value="base-input" />
+                                                <String fx:value="base-text-normal-1" />
+                                             </styleClass>
+                                          </TextField>
+                                          <Label fx:id="error_calle" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label styleClass="base-text-normal-1" text="Numero exterior" GridPane.rowIndex="2" />
+                                          <TextField fx:id="campo_num_ext" promptText="742" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <styleClass>
+                                                <String fx:value="base-input" />
+                                                <String fx:value="base-text-normal-1" />
+                                             </styleClass>
+                                          </TextField>
+                                          <Label fx:id="error_num_ext" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Label styleClass="base-text-normal-1" text="Numero interior" GridPane.rowIndex="4" />
+                                          <TextField fx:id="campo_num_int" promptText="Depto 3B" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <styleClass>
+                                                <String fx:value="base-input" />
+                                                <String fx:value="base-text-normal-1" />
+                                             </styleClass>
+                                          </TextField>
+                                          <Label fx:id="error_num_int" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                          <Label styleClass="base-text-normal-1" text="Colonia/Barrio" GridPane.rowIndex="6" />
+                                          <TextField fx:id="campo_colonia_barrio" promptText="Roma Norte" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                             <styleClass>
+                                                <String fx:value="base-input" />
+                                                <String fx:value="base-text-normal-1" />
+                                             </styleClass>
+                                          </TextField>
+                                          <Label fx:id="error_colonia_barrio" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                          <Label styleClass="base-text-normal-1" text="Codigo postal" GridPane.rowIndex="8" />
+                                          <TextField fx:id="campo_codigo_postal" promptText="06700" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                             <styleClass>
+                                                <String fx:value="base-input" />
+                                                <String fx:value="base-text-normal-1" />
+                                             </styleClass>
+                                          </TextField>
+                                          <Label fx:id="error_codigo_postal" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                          <Label styleClass="base-text-normal-1" text="Ciudad/municipio" GridPane.rowIndex="10" />
+                                          <TextField fx:id="campo_ciudad_municipio" promptText="Cuauhtemoc" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                             <styleClass>
+                                                <String fx:value="base-input" />
+                                                <String fx:value="base-text-normal-1" />
+                                             </styleClass>
+                                          </TextField>
+                                          <Label fx:id="error_ciudad_municipio" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                          <Label styleClass="base-text-normal-1" text="Estado" GridPane.rowIndex="12" />
+                                          <ComboBox fx:id="campo_estado" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                          <TextField fx:id="campo_estado" promptText="Ciudad de Mexico" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                             <styleClass>
+                                                <String fx:value="base-input" />
+                                                <String fx:value="base-text-normal-1" />
+                                             </styleClass>
+                                          </TextField>
+                                          <Label fx:id="error_estado" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                                          <Label styleClass="base-text-normal-1" text="Pais" GridPane.rowIndex="14" />
+                                          <TextField fx:id="campo_pais" promptText="Mexico" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                                             <styleClass>
+                                                <String fx:value="base-input" />
+                                                <String fx:value="base-text-normal-1" />
+                                             </styleClass>
+                                          </TextField>
+                                          <Label fx:id="error_pais" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                                       </children>
+                                    </GridPane>
+                                    <GridPane id="id_data_1" fx:id="datos_paso_1" hgap="5.0" vgap="14.0" visible="false">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="100.5" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="274.5" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label id="id_label_nombre" text="Nombre(s)">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="id_input_nombre" fx:id="campo_nombre" promptText="VEGA780615HDFLML08" styleClass="base-input" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label id="id_error_nombre" fx:id="error_nombre" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label id="id_label_apellido_paterno" text="Apellido paterno" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="id_input_apellido_paterno" fx:id="campo_apellido_p" promptText="VEGA780615HDFLML08" styleClass="base-input" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label id="id_error_apellido_paterno" fx:id="error_apellido_p" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Label id="id_label_apellido_materno" text="Apellido materno" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="id_input_apellido_materno" fx:id="campo_apellido_m" promptText="VEGA780615HDFLML08" styleClass="base-input" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label id="id_error_apellido_materno" fx:id="error_apellido_m" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                          <Label id="id_label_cumpleaños" text="Fecha de nacimiento" GridPane.rowIndex="6">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <DatePicker fx:id="campo_fecha_nacimiento" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="base-input" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                          <Label id="id_error_cumpleaños" fx:id="error_fecha_nacimiento" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                          <Label id="id_label_curp" text="CURP" GridPane.rowIndex="8">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="id_input_curp" fx:id="campo_curp" promptText="VEGA780615HDFLML08" styleClass="base-input" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label id="id_error_curp" fx:id="error_curp" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </VBox>
+                        <StackPane>
+                           <children>
+                              <Button fx:id="btn_paso_3" mnemonicParsing="false" onAction="#paso_3" text="Crear cuenta">
+                                 <styleClass>
+                                    <String fx:value="base-boton" />
+                                    <String fx:value="base-boton-verde" />
+                                 </styleClass>
+                              </Button>
+                              <Button fx:id="btn_paso_2" mnemonicParsing="false" onAction="#paso_2" text="Continuar">
+                                 <styleClass>
+                                    <String fx:value="base-boton" />
+                                    <String fx:value="base-boton-verde" />
+                                 </styleClass>
+                              </Button>
+                              <Button fx:id="btn_paso_1" mnemonicParsing="false" onAction="#paso_1" text="Continuar">
+                                 <styleClass>
+                                    <String fx:value="base-boton" />
+                                    <String fx:value="base-boton-verde" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </StackPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="36.0" left="15.0" right="15.0" top="36.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+   </padding>
+   <stylesheets>
+      <URL value="@../css/styles.css" />
+      <URL value="@../css/registrar.css" />
+   </stylesheets>
+</HBox>

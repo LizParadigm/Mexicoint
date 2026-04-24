@@ -15,14 +15,14 @@ import bylizzy.mexicoint.models.Usuario;
  */
 public class IniciarSesionService {
 
-    public Usuario entrar(String curp ,String contrasena) {
+    public void entrar(String curp ,String contrasena) {
         //llama el api
-        IniciarSesionDTO dto = AutentificacionApi.validarCredenciales(curp ,contrasena);
+        //IniciarSesionDTO dto = AutentificacionApi.validarCredenciales(curp ,contrasena);
         //transforma dto en modelo
-        Usuario usuario = convertirDTO(dto);
+        //Usuario usuario = convertirDTO(dto);
         //guarda sesion
-        Sesion sesion = new Sesion(usuario ,dto.token);
-        return usuario;
+        //Sesion sesion = new Sesion(usuario ,dto.token);
+        //return usuario;
     }
 
     private Usuario convertirDTO(IniciarSesionDTO dto) {

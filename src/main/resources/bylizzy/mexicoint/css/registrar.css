@@ -1,0 +1,44 @@
+/*
+ * Hoja con los estilos exclusivos de registrar.jxml.
+ */
+
+.background-registrar {
+    -fx-background-color: linear-gradient(
+        to right,
+        #000000 0%,
+        #0D0C0C 8%,
+        #0D0C0C 59%,
+        #717171 70%,
+        #FFFFFF 100%
+        );
+}
+
+
+/*
+ * Boton: ine no verificada.
+*/
+
+/* estilo */
+.boton-sin-verificar{
+    -fx-background-color:#C99D9D;
+}
+
+/* efecto */
+.boton-sin-verificar:hover{
+    -fx-background-color: #C97F7F;
+
+}
+
+/*
+ * Boton: ine verificada.
+*/
+
+/* estilo */
+.boton-verificado{
+    -fx-background-color:#9DC99D;
+}
+
+/* efecto */
+.boton-verificado:hover{
+    -fx-background-color:#7FC97F;
+}

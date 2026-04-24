@@ -4,9 +4,13 @@
  */
 package bylizzy.mexicoint.controllers;
 
+import bylizzy.mexicoint.App;
 import bylizzy.mexicoint.services.IniciarSesionService;
+import bylizzy.mexicoint.services.ValidacionesService;
+import bylizzy.mexicoint.services.ValidacionesService.Validacion;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,6 +18,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -40,16 +46,18 @@ public class IniciarSesionController implements Initializable {
     @FXML
     private Button btn_registrarme;
 
+    @FXML
+    private Text text_aqui;
+
+    /* variables de control */
+    ValidacionesService validar = new ValidacionesService();
+
     @Override
     public void initialize(URL url ,ResourceBundle rb) {
         campo_curp.setTextFormatter(new TextFormatter<>(change -> {
             String texto = change.getControlNewText();
-
-            //solo alfanumericos
-            //sin espacio
-            //longitud maxima de 18
-            if (texto.matches("[a-zA-Z0-9]*") && texto.length() <= 18) {
-                //convertimos a mayusculas de una vez
+            if (validar.alfanumerico(texto) && texto.length() <= 18) {
+                //convertIR a mayusculas de una vez
                 change.setText(change.getText().toUpperCase());
                 return change;
             }
@@ -59,7 +67,6 @@ public class IniciarSesionController implements Initializable {
         campo_contrasena.setTextFormatter(new TextFormatter<>(change -> {
             String texto = change.getControlNewText();
 
-            //longitud maxima de 50
             if (texto.length() <= 50) {
                 return change;
             }
@@ -68,19 +75,41 @@ public class IniciarSesionController implements Initializable {
     }
 
     @FXML
-    private void iniciarSesion() {
-        try {
-            //si sale bien
-//            IniciarSesionService.
+    private void iniciarSesion(ActionEvent event) {
+        Validacion curp = validar.curp(campo_curp.getText());
+        Validacion contra = validar.contrasena(campo_contrasena.getText());
+        //validaciones front
+        if (curp.estado() && contra.estado()) { //si sale bien
+            error_curp.setText(curp.mensaje());
+            error_contrasena.setText(contra.mensaje());
+            //IniciarSesionService.
             //redireccionamos al home
 
-        } catch (Exception e) {
+        } else {
             //si sale mal
-            //manejamos error error.exception;
-            //error_curp.setText(error.curp);
-            //error_contrasena.setText(error.contrasena);
+            error_curp.setText(curp.mensaje());
+            error_contrasena.setText(contra.mensaje());
+        }
+    }
+
+    @FXML
+    void recuperarCuenta(MouseEvent event) {
+        try {
+            App.abrirModal("recupeararCuenta");
+        } catch (Exception e) {
 
         }
+
+    }
+
+    @FXML
+    void registrar(ActionEvent event) {
+        try {
+            App.cambiarVista("registrar");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
     }
 
 }

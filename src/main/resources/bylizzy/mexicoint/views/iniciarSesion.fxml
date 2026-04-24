@@ -86,7 +86,7 @@
                                           <Font size="16.0" />
                                        </font>
                                     </Text>
-                                    <Text id="id_recuperar-cuenta" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="base-text-link" text="aqui">
+                                    <Text id="id_recuperar-cuenta" fx:id="text_aqui" onMouseClicked="#recuperarCuenta" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="base-text-link" text="aqui">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -109,12 +109,12 @@
                               <RowConstraints vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button id="id_registrar" fx:id="btn_registrarme" mnemonicParsing="false" styleClass="base-boton" text="Registrarme">
+                              <Button id="id_registrar" fx:id="btn_registrarme" mnemonicParsing="false" onAction="#registrar" styleClass="base-boton" text="Registrarme">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Button>
-                              <Button id="id_entrar" fx:id="btn_iniciarSesion" mnemonicParsing="false" styleClass="base-boton, base-boton-verde" text="Iniciar sesion" GridPane.columnIndex="1">
+                              <Button id="id_entrar" fx:id="btn_iniciarSesion" mnemonicParsing="false" onAction="#iniciarSesion" styleClass="base-boton, base-boton-verde" text="Iniciar sesion" GridPane.columnIndex="1">
                                  <font>
                                     <Font size="16.0" />
                                  </font>

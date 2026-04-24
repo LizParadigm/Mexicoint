@@ -45,6 +45,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -color-azul-opaco-1:#000089;
     -color-azul-opaco-2:#00006D;
 
+
 }
 
 /*
@@ -152,10 +153,42 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 
 
+/*
+ * Fuentes.
+*/
 
+/* Titulo: es el texto de mayor tamaño destinado a textos como encabezados por lo que es bold */
+.base-text-titulo-1{
+    -fx-font-size:48px;
+}
+
+.base-text-titulo-2{
+    -fx-font-size:48px;
+    -fx-font-weight:bold;
+}
+
+/* Subtitulo: es el texto de tamaño moderado pero no tiene bold, destinado a textos que remarquen secciones */
+.base-text-subtitulo-1{
+    -fx-font-size:28px;
+}
+
+.base-text-subtitulo-2{
+    -fx-font-size:28px;
+    -fx-font-weight:bold;
+}
+
+/* Texto normal: texto normal con tamaño ligeramente grande. */
+.base-text-normal-1{
+   -fx-font-size:16px;
+}
+
+.base-text-normal-2{
+   -fx-font-size:16px;
+   -fx-font-weight:bold;
+}
 
 /*
- * ERRORES
+* ERRORES
 */
 
 /* input */
