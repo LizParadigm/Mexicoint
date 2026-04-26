@@ -6,8 +6,8 @@ package bylizzy.mexicoint.controllers;
 
 import bylizzy.mexicoint.App;
 import bylizzy.mexicoint.services.IniciarSesionService;
-import bylizzy.mexicoint.services.ValidacionesService;
-import bylizzy.mexicoint.services.ValidacionesService.Validacion;
+import bylizzy.mexicoint.utils.ValidacionesService;
+import bylizzy.mexicoint.utils.ValidacionesService.Validacion;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;

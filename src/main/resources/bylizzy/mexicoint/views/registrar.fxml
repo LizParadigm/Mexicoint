@@ -57,7 +57,7 @@
                               </TextFlow>
                               <StackPane>
                                  <children>
-                                    <GridPane id="id_data_3" fx:id="datos_paso_3" hgap="5.0" vgap="14.0" visible="false">
+                                    <GridPane id="id_data_3" fx:id="datos_paso_3" hgap="5.0" vgap="14.0">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="100.5" />
                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="274.5" />
@@ -76,7 +76,7 @@
                                                 <String fx:value="base-input" />
                                              </styleClass>
                                           </PasswordField>
-                                          <Label styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label fx:id="error_contrasena" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <Label styleClass="base-text-normal-1" text="Confirmar contraseña" GridPane.rowIndex="2" />
                                           <PasswordField fx:id="campo_confirmar_contrasena" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                              <styleClass>
@@ -84,10 +84,10 @@
                                                 <String fx:value="base-input" />
                                              </styleClass>
                                           </PasswordField>
-                                          <Label styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Label fx:id="error_confirmar_contrasena" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                        </children>
                                     </GridPane>
-                                    <GridPane id="id_data_2" fx:id="datos_paso_2" hgap="5.0" vgap="14.0">
+                                    <GridPane id="id_data_2" fx:id="datos_paso_2" hgap="5.0" vgap="14.0" visible="false">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="100.5" />
                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="274.5" />
@@ -160,21 +160,10 @@
                                           </TextField>
                                           <Label fx:id="error_ciudad_municipio" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                                           <Label styleClass="base-text-normal-1" text="Estado" GridPane.rowIndex="12" />
-                                          <ComboBox fx:id="campo_estado" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-                                          <TextField fx:id="campo_estado" promptText="Ciudad de Mexico" GridPane.columnIndex="1" GridPane.rowIndex="12">
-                                             <styleClass>
-                                                <String fx:value="base-input" />
-                                                <String fx:value="base-text-normal-1" />
-                                             </styleClass>
-                                          </TextField>
+                                          <ComboBox fx:id="campo_estado" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="base-input" GridPane.columnIndex="1" GridPane.rowIndex="12" />
                                           <Label fx:id="error_estado" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="13" />
                                           <Label styleClass="base-text-normal-1" text="Pais" GridPane.rowIndex="14" />
-                                          <TextField fx:id="campo_pais" promptText="Mexico" GridPane.columnIndex="1" GridPane.rowIndex="14">
-                                             <styleClass>
-                                                <String fx:value="base-input" />
-                                                <String fx:value="base-text-normal-1" />
-                                             </styleClass>
-                                          </TextField>
+                                          <ComboBox fx:id="campo_pais" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#cambiarPais" styleClass="base-input" GridPane.columnIndex="1" GridPane.rowIndex="14" />
                                           <Label fx:id="error_pais" styleClass="label-error" GridPane.columnIndex="1" GridPane.rowIndex="15" />
                                        </children>
                                     </GridPane>

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package bylizzy.mexicoint.services;
+package bylizzy.mexicoint.utils;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -63,18 +63,20 @@ public class ValidacionesService {
         } else if (contrasena.length() < 8) {
             return new Validacion(false ,"Debe tener minimo 8 caracteres.");
         } else if (!caracterMayus(contrasena)) {
-            return new Validacion(false ,"Debe tener minimo una mayuscula.");
+            return new Validacion(false ,"Debe tener al menos un caracter en mayuscula.");
         } else if (!caracterEspecial(contrasena)) {
-            return new Validacion(false ,"Debe tener minimo un caracter especial");
+            return new Validacion(false ,"Debe tener al menos un caracter especial.");
         }
         return new Validacion(false ,"Error desconocido.");
     }
 
-    public Validacion contrasenaCorrecta(String contrasena) {
-        if (true) {
+    public Validacion contrasenaCorrecta(String contrasena ,String confirmar) {
+        if (confirmar.equals(contrasena)) {
             return new Validacion(true ,"");
+        } else if (!confirmar.equals(contrasena)) {
+            return new Validacion(false ,"Las contraseñas no coinciden.");
         }
-        return new Validacion(false ,"");
+        return new Validacion(false ,"Error desconocido.");
     }
 
     /*
@@ -244,10 +246,26 @@ public class ValidacionesService {
      * no debe ser la opcion por default
      */
     public Validacion estado(String estado) {
-        if (!"seleccionar estado".equals(estado)) {
+        if (!"Seleccionar estado".equals(estado)) {
             return new Validacion(true ,"");
+        } else if ("Seleccionar estado".equals(estado)) {
+            return new Validacion(false ,"Selecciona un estado.");
+
         }
         return new Validacion(false ,"Error desconocido.");
+    }
+
+    /*
+     * ====== PAIS ======
+     * no debe ser la opcion por default
+     */
+    public Validacion pais(String pais) {
+        if (!"Seleccionar pais".equals(pais)) {
+            return new Validacion(true ,"");
+        } else if ("Seleccionar pais".equals(pais)) {
+            return new Validacion(false ,"Selecciona un pais.");
+        }
+        return new Validacion(false ,"Error desconocido");
     }
 
     /*
@@ -268,14 +286,6 @@ public class ValidacionesService {
 
     public boolean alfanumericoMexicano(String dato) {
         return dato.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]*");
-    }
-
-    public boolean caracterMayus(String dato) {
-        return dato.matches(".*[A-Z].*");
-    }
-
-    public boolean caracterEspecial(String dato) {
-        return dato.matches(".*[^a-zA-Z0-9\\s].*");
     }
 
     public boolean espacioAlInicio(String dato) {
@@ -311,11 +321,23 @@ public class ValidacionesService {
     }
 
     public boolean regexCodigoPostal(String dato) {
-        return dato.matches("\\d{5}");
+        return dato.matches("[\\d]{0,5}");
     }
 
     public boolean regexCiudadMunicipio(String dato) {
         return dato.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{0,75}");
+    }
+
+    public boolean regexContrasena(String dato) {
+        return dato.matches("^(?=.*[A-Z])(?=.*[\\W_]).[a-z0-9].{0,55}$");
+    }
+
+    public boolean caracterMayus(String dato) {
+        return dato.matches(".*[A-Z].*");
+    }
+
+    public boolean caracterEspecial(String dato) {
+        return dato.matches(".*[^a-zA-Z0-9\\s].*");
     }
 
 }

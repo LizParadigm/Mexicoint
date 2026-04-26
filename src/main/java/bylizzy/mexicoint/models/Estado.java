@@ -9,5 +9,20 @@ package bylizzy.mexicoint.models;
  * @author La rana
  */
 public class Estado {
+    private String nombre;
+
+    public Estado(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    
     
 }

@@ -1,14 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bylizzy.mexicoint.controllers.RecuperarCuentaController">
-    <stylesheets>
-        <URL value="@/bylizzy/mexicoint/css/recuperarcuenta.css"/>
-    </stylesheets>
-</AnchorPane>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1100.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity">
+         <children>
+            <VBox alignment="TOP_CENTER">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" styleClass="base-contenedor">
+                     <image>
+                        <Image url="@../images/locoluna.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+                  <Pane styleClass="base-contenedor">
+                     <children>
+                        <VBox alignment="TOP_CENTER" spacing="36.0">
+                           <children>
+                              <Label styleClass="base-text-titulo-2" text="Recuperando" />
+                              <TextFlow prefWidth="500.0">
+                                 <children>
+                                    <Text fx:id="texto_instruccion" strokeType="OUTSIDE" strokeWidth="0.0" text="Escriba el correo asociado a su cuenta y de click en Continuar, recibirá un correo electrónico.">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </TextFlow>
+                              <StackPane>
+                                 <children>
+                                    <GridPane id="id_data_3" fx:id="datos_paso_1" alignment="TOP_CENTER" hgap="5.0" vgap="14.0" visible="false">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="100.5" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="350.0" prefWidth="350.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label styleClass="base-text-normal-1" text="CURP" />
+                                          <TextField fx:id="campo_curp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="base-input" GridPane.columnIndex="1" />
+                                          <Label fx:id="error_curp" styleClass="label-error" text="Este es un texto de error generico de prueba." GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                    <GridPane id="id_data_3" fx:id="datos_paso_2" alignment="TOP_CENTER" hgap="5.0" vgap="14.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="100.5" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="350.0" prefWidth="350.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label styleClass="base-text-normal-1" text="Codigo" />
+                                          <TextField fx:id="campo_codigo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="base-input" GridPane.columnIndex="1" />
+                                          <Label fx:id="error_codigo" styleClass="label-error" text="Este es un texto de error generico de prueba." GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                    <GridPane id="id_data_3" fx:id="datos_paso_3" alignment="TOP_CENTER" hgap="5.0" vgap="14.0" visible="false">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="100.5" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="350.0" prefWidth="350.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="12.5" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label styleClass="base-text-normal-1" text="Contraseña" />
+                                          <PasswordField fx:id="campo_contrasena" GridPane.columnIndex="1">
+                                             <styleClass>
+                                                <String fx:value="base-text-normal-1" />
+                                                <String fx:value="base-input" />
+                                             </styleClass>
+                                          </PasswordField>
+                                          <Label fx:id="error_contrasena" styleClass="label-error" text="Este es un texto de error generico de prueba." GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label styleClass="base-text-normal-1" text="Confirmar contraseña" GridPane.rowIndex="2" />
+                                          <PasswordField fx:id="campo_confirmar_contrasena" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <styleClass>
+                                                <String fx:value="base-text-normal-1" />
+                                                <String fx:value="base-input" />
+                                             </styleClass>
+                                          </PasswordField>
+                                          <Label fx:id="error_confirmar_contrasena" styleClass="label-error" text="Este es un texto de error generico de prueba." GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </StackPane>
+                              <StackPane>
+                                 <children>
+                                    <Button fx:id="btn_paso_1" mnemonicParsing="false" onAction="#paso_1" text="Continuar">
+                                       <styleClass>
+                                          <String fx:value="base-boton" />
+                                          <String fx:value="base-boton-verde" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button fx:id="btn_paso_2" mnemonicParsing="false" onAction="#paso_2" text="Continuar">
+                                       <styleClass>
+                                          <String fx:value="base-boton" />
+                                          <String fx:value="base-boton-verde" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button fx:id="btn_paso_3" mnemonicParsing="false" onAction="#paso_3" text="Confirmar">
+                                       <styleClass>
+                                          <String fx:value="base-boton" />
+                                          <String fx:value="base-boton-verde" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </StackPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="36.0" left="15.0" right="15.0" top="36.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+   <stylesheets>
+      <URL value="@../css/styles.css" />
+      <URL value="@../css/recuperarcuenta.css" />
+   </stylesheets>
+</StackPane>

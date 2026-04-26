@@ -4,9 +4,13 @@
  */
 package bylizzy.mexicoint.controllers;
 
+import bylizzy.mexicoint.App;
+import bylizzy.mexicoint.models.Estado;
+import bylizzy.mexicoint.models.Pais;
 import bylizzy.mexicoint.services.RegistrarService;
-import bylizzy.mexicoint.services.ValidacionesService;
-import bylizzy.mexicoint.services.ValidacionesService.Validacion;
+import bylizzy.mexicoint.utils.ValidacionesService;
+import bylizzy.mexicoint.utils.ValidacionesService.Validacion;
+import bylizzy.mexicoint.utils.CatalogoUbicacionesService;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -43,28 +47,40 @@ public class RegistrarController implements Initializable {
     private Button btn_paso_3;
 
     @FXML
-    private GridPane datos_paso_1;
-
-    @FXML
-    private TextField campo_nombre;
-
-    @FXML
     private TextField campo_apellido_m;
 
     @FXML
     private TextField campo_apellido_p;
 
     @FXML
-    private DatePicker campo_fecha_nacimiento;
+    private TextField campo_calle;
+
+    @FXML
+    private TextField campo_ciudad_municipio;
+
+    @FXML
+    private TextField campo_codigo_postal;
+
+    @FXML
+    private TextField campo_colonia_barrio;
+
+    @FXML
+    private PasswordField campo_confirmar_contrasena;
+
+    @FXML
+    private PasswordField campo_contrasena;
 
     @FXML
     private TextField campo_curp;
 
     @FXML
-    private GridPane datos_paso_2;
+    private ComboBox<Estado> campo_estado;
 
     @FXML
-    private TextField campo_calle;
+    private DatePicker campo_fecha_nacimiento;
+
+    @FXML
+    private TextField campo_nombre;
 
     @FXML
     private TextField campo_num_ext;
@@ -73,27 +89,16 @@ public class RegistrarController implements Initializable {
     private TextField campo_num_int;
 
     @FXML
-    private TextField campo_colonia_barrio;
+    private ComboBox<String> campo_pais;
 
     @FXML
-    private TextField campo_codigo_postal;
+    private GridPane datos_paso_1;
 
     @FXML
-    private TextField campo_ciudad_municipio;
-
-    @FXML
-    private TextField campo_estado;
-
-    @FXML
-    private TextField campo_pais;
+    private GridPane datos_paso_2;
 
     @FXML
     private GridPane datos_paso_3;
-    @FXML
-    private PasswordField campo_contrasena;
-
-    @FXML
-    private PasswordField campo_confirmar_contrasena;
 
     @FXML
     private Label error_apellido_m;
@@ -117,7 +122,7 @@ public class RegistrarController implements Initializable {
     private Label error_curp;
 
     @FXML
-    private ComboBox<String> error_estado;
+    private Label error_estado;
 
     @FXML
     private Label error_fecha_nacimiento;
@@ -133,6 +138,12 @@ public class RegistrarController implements Initializable {
 
     @FXML
     private Label error_pais;
+
+    @FXML
+    private Label error_contrasena;
+
+    @FXML
+    private Label error_confirmar_contrasena;
 
     /*variables de control*/
     RegistrarService control = new RegistrarService();
@@ -169,7 +180,7 @@ public class RegistrarController implements Initializable {
                 DateTimeFormatter.ofPattern("dd-MM-yyyy") ,
                 DateTimeFormatter.ofPattern("yyyy MM dd") ,
                 DateTimeFormatter.ofPattern("dd MM yyyy") ,
-                DateTimeFormatter.ofPattern("yyy-MM-dd")
+                DateTimeFormatter.ofPattern("yyyy-MM-dd")
             };
 
             @Override
@@ -242,6 +253,12 @@ public class RegistrarController implements Initializable {
                 )
         );
 
+        campo_pais.getItems().addAll(CatalogoUbicacionesService.paises());
+        campo_pais.setValue("Seleccionar pais");
+
+        configurarPais(campo_pais.getValue());
+
+        //       campo_estado.getItems().addAll(pais.getEstados());
         //datos de seguridad
         //campo_contrasena
         //campo_confirmar_contrasena
@@ -285,11 +302,12 @@ public class RegistrarController implements Initializable {
         Validacion cumpleanos = validar.fechaNacimiento(campo_fecha_nacimiento.getEditor().getText());
         Validacion curp = validar.curp(campo_curp.getText());
 
-        if (nombre.estado() && apellido_p.estado() && apellido_m.estado() && cumpleanos.estado() && curp.estado()) {
-        //if (false) {
+        if (true) {
+            //if (nombre.estado() && apellido_p.estado() && apellido_m.estado() && cumpleanos.estado() && curp.estado()) {
+            //if (false) {
             //se necesitan hacer validaciones de existencia de curp
             //si sale mal
-                //mostrar mensaje de error en error_curp  frenar esta funcion
+            //mostrar mensaje de error en error_curp  frenar esta funcion
             //siguiente paso.
             controlarVisibilidad(control.getPaso());
         } else {
@@ -310,11 +328,12 @@ public class RegistrarController implements Initializable {
         Validacion colonia_barrio = validar.coloniaBarrio(campo_colonia_barrio.getText());
         Validacion codigo_postal = validar.codigoPostal(campo_codigo_postal.getText());
         Validacion ciudad_municipio = validar.ciudadMunicipio(campo_ciudad_municipio.getText());
-        Validacion estado = validar.estado(campo_estado.getText());
-        //Validacion pais = validar.pais(campo_pais.getText());
+        Validacion estado = validar.estado(campo_estado.getValue().toString());
+        Validacion pais = validar.pais(campo_pais.getValue().toString());
 
-        if (calle.estado() && num_ext.estado() && num_int.estado() && colonia_barrio.estado() && codigo_postal.estado() && ciudad_municipio.estado() && estado.estado()) {
-        //if (false){
+        if (true) {
+            //if (calle.estado() && num_ext.estado() && num_int.estado() && colonia_barrio.estado() && codigo_postal.estado() && ciudad_municipio.estado() && estado.estado() && pais.estado()) {
+            //if (false){
             //siguiente paso
             controlarVisibilidad(control.getPaso());
 
@@ -325,21 +344,38 @@ public class RegistrarController implements Initializable {
             error_colonia_barrio.setText(colonia_barrio.mensaje());
             error_codigo_postal.setText(codigo_postal.mensaje());
             error_ciudad_municipio.setText(ciudad_municipio.mensaje());
-            error_estado.getEditor().setText(estado.mensaje());
+            error_estado.setText(estado.mensaje());
+            error_pais.setText(pais.mensaje());
         }
     }
 
     @FXML
     private void paso_3(ActionEvent event) {
         //validar datos 3 solo front
-        //si sale bien
+        Validacion contrasena = validar.contrasena(campo_contrasena.getText());
+        Validacion confirmar = validar.contrasenaCorrecta(campo_contrasena.getText() ,campo_confirmar_contrasena.getText());
+
+        //if (false) {
+        if (contrasena.estado() && confirmar.estado()) {
+            //si sale bien
             //solicitar al servidor crear una cuenta cliente
             //si sale bien
+            try {
                 //entrar al home cliente
-            //si sale mal mostrar mensaje de que salio mal y explicar por que
-        //si sale mal
-            //mostrar mensajes de error de cada campo para que el usuario corrija
+                App.cambiarVista("inicio");
+            } catch (Exception e) {
+                //si sale mal mostrar mensaje de que salio mal y explicar por que
+            }
+        } else {
+            error_contrasena.setText(contrasena.mensaje());
+            error_confirmar_contrasena.setText(confirmar.mensaje());
+        }
 
+    }
+
+    @FXML
+    private void cambiarPais(ActionEvent event) {
+        configurarPais(campo_pais.getValue());
     }
 
     /*funciones de control*/
@@ -370,10 +406,20 @@ public class RegistrarController implements Initializable {
         nodo.setManaged(estado);
     }
 
-    public static TextFormatter<String> crearFormato(
-            Predicate<String> validacion ,
-            boolean mayusculas
-    ) {
+    private void configurarPais(String pais) {
+        campo_estado.getItems().clear();
+        campo_estado.getItems().add(new Estado("Seleccionar estado"));
+        campo_estado.getSelectionModel().selectFirst();
+
+        Pais configuracion = CatalogoUbicacionesService.estados(pais);
+
+        if (configuracion != null) {
+            campo_estado.getItems().addAll(configuracion.getEstados());
+        }
+
+    }
+
+    public static TextFormatter<String> crearFormato(Predicate<String> validacion ,boolean mayusculas) {
         return new TextFormatter<>(change -> {
             String texto = change.getControlNewText();
 
@@ -388,4 +434,5 @@ public class RegistrarController implements Initializable {
             return null;
         });
     }
+
 }
