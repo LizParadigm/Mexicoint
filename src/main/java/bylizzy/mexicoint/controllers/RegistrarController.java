@@ -11,6 +11,7 @@ import bylizzy.mexicoint.services.RegistrarService;
 import bylizzy.mexicoint.utils.ValidacionesService;
 import bylizzy.mexicoint.utils.ValidacionesService.Validacion;
 import bylizzy.mexicoint.utils.CatalogoUbicacionesService;
+import bylizzy.mexicoint.utils.ControlVista;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -362,7 +363,7 @@ public class RegistrarController implements Initializable {
             //si sale bien
             try {
                 //entrar al home cliente
-                App.cambiarVista("inicio");
+                App.cambiarVista(ControlVista.INICIA_SESION);
             } catch (Exception e) {
                 //si sale mal mostrar mensaje de que salio mal y explicar por que
             }

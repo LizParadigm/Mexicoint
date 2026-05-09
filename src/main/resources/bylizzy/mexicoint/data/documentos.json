@@ -1,0 +1,16 @@
+{
+    "documentos": [
+        {
+            "nombre": "INE"
+        },
+        {
+            "nombre": "Documento 1"
+        },
+        {
+            "nombre": "Documento 2"
+        },
+        {
+            "nombre": "Firma electronica"
+        }
+    ]
+}

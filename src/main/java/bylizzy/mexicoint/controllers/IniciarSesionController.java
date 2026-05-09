@@ -6,6 +6,7 @@ package bylizzy.mexicoint.controllers;
 
 import bylizzy.mexicoint.App;
 import bylizzy.mexicoint.services.IniciarSesionService;
+import bylizzy.mexicoint.utils.ControlVista;
 import bylizzy.mexicoint.utils.ValidacionesService;
 import bylizzy.mexicoint.utils.ValidacionesService.Validacion;
 import java.net.URL;
@@ -95,9 +96,9 @@ public class IniciarSesionController implements Initializable {
     @FXML
     void recuperarCuenta(MouseEvent event) {
         try {
-            App.abrirModal("recupeararCuenta");
+            //App.abrirModal(ControlVista.RECUPERAR_CUENTA);
         } catch (Exception e) {
-
+            System.out.println(e);
         }
 
     }
@@ -105,7 +106,7 @@ public class IniciarSesionController implements Initializable {
     @FXML
     void registrar(ActionEvent event) {
         try {
-            App.cambiarVista("registrar");
+            App.cambiarVista(ControlVista.REGISTRAR_CLIENTE);
         } catch (Exception e) {
             System.out.println(e);
         }

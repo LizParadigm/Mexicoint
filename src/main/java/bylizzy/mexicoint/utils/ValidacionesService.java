@@ -265,7 +265,7 @@ public class ValidacionesService {
         } else if ("Seleccionar pais".equals(pais)) {
             return new Validacion(false ,"Selecciona un pais.");
         }
-        return new Validacion(false ,"Error desconocido");
+        return new Validacion(false ,"Error desconocido.");
     }
 
     /*
@@ -273,8 +273,18 @@ public class ValidacionesService {
      * solo numerico
      * longitud exacta de 9 caracteres
      */
-    public boolean codigo(String codigo) {
-        return false;
+    public Validacion codigo(String codigo) {
+        if(codigo.length()==9){
+            return new Validacion(true, "");
+        }
+        else if(codigo.length()<=9){
+            return new Validacion(false,"Codigo demaciado corto.");
+        }
+        return new Validacion(false,"Error desconocido.");
+    }
+    
+    public Validacion codigoCorrecto(String codigo){
+        return new Validacion(false,"Error desconocido");
     }
 
     /*
@@ -340,4 +350,7 @@ public class ValidacionesService {
         return dato.matches(".*[^a-zA-Z0-9\\s].*");
     }
 
+    public boolean regexCodigo(String dato){
+        return dato.matches("[0-9]{0,9}");
+    }
 }

@@ -1,0 +1,28 @@
+{
+  "productos": {
+        "debito":[
+            {
+                "id":1,
+                "tipo": "debito",
+                "nombre":"Tarjeta debito comun"
+            },
+            {
+                "id":2,
+                "tipo": "debito",
+                "nombre":"Tarjeta debito vip"
+            }
+        ],
+        "credito":[
+            {
+                "id":3,
+                "tipo":"credito",
+                "nombre":"Tarjeta credito comun"
+            },
+            {
+                "id":4,
+                "tipo":"credito",
+                "nombre":"Tarjeta credito vip"
+            }
+        ]
+  }
+}
