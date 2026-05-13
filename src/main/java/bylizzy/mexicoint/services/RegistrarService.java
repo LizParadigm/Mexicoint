@@ -4,16 +4,19 @@
  */
 package bylizzy.mexicoint.services;
 
+import bylizzy.mexicoint.models.Estado;
+import bylizzy.mexicoint.models.Pais;
+import bylizzy.mexicoint.utils.CatalogoUbicacionesService;
+import bylizzy.mexicoint.utils.ControlComun;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
 
 /**
  *
  * @author La rana
  */
-public class RegistrarService {
+public class RegistrarService extends ControlComun  {
 
-    //control de paso
-    private int paso;
     //datos del paso 1
     private Node nombre;
     private Node apellidoPaterno;
@@ -25,23 +28,22 @@ public class RegistrarService {
     //datos del paso 2
     //datos del paso 3
 
-    public RegistrarService() {
-        this.paso = 1;
+    public void configurarPais(ComboBox<Estado> campo_estado ,String pais) {
+        configurarPaisDefault(campo_estado);
+
+        Pais configuracion = CatalogoUbicacionesService.estados(pais);
+
+        if (configuracion != null) {
+            campo_estado.getItems().addAll(configuracion.getEstados());
+        }
+
     }
 
-    //funciones
-    public void siguientePaso() {
-        paso = paso + 1;
-    }
-    
-    
-    
-    
+    private void configurarPaisDefault(ComboBox<Estado> campo_estado) {
+        campo_estado.getItems().clear();
+        campo_estado.getItems().add(new Estado("Seleccionar estado"));
+        campo_estado.getSelectionModel().selectFirst();
 
-    //getters y setters
-    public int getPaso() {
-        return paso;
     }
-    
 
 }

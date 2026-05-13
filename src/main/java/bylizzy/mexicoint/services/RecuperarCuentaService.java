@@ -4,26 +4,23 @@
  */
 package bylizzy.mexicoint.services;
 
+import bylizzy.mexicoint.utils.ControlComun;
+
 /**
  *
  * @author La rana
  */
-public class RecuperarCuentaService {
+public class RecuperarCuentaService extends ControlComun{
 
-    private int paso;
     private String instruccion;
 
     public RecuperarCuentaService() {
-        this.paso = 1;
         this.instruccion = "";
     }
 
-    public void siguientePaso() {
-        paso = paso + 1;
-    }
 
     public String instrucciones() {
-        switch (paso) {
+        switch (getPaso()) {
             case 1:
                 instruccion = "Escriba el correo asociado a su cuenta y de click en Continuar, recibirá un correo electrónico.";
                 break;
@@ -37,9 +34,6 @@ public class RecuperarCuentaService {
         return null;
     }
 
-    public int getPaso() {
-        return paso;
-    }
 
     public String getInstruccion() {
         return instruccion;

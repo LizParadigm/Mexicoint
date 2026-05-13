@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+
+
+<StackPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bylizzy.mexicoint.controllers.ModuloAutentificacionController">
+   <children>
+      <Pane fx:id="fondo_2" prefHeight="200.0" prefWidth="200.0" styleClass="background-autentificacion-recuperar-cuenta" />
+      <Pane fx:id="fondo_1" prefHeight="200.0" prefWidth="200.0" styleClass="background-autentificacion" />
+      <HBox id="id_iniciar_sesion" alignment="CENTER" minHeight="-Infinity" minWidth="1000.0" spacing="100.0">
+         <children>
+            <StackPane id="id-contenedor-izq" fx:id="contenedor_logo" HBox.hgrow="ALWAYS">
+               <children>
+                  <ImageView id="id_img_logo" fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <StackPane fx:id="contenedor_controladores" />
+         </children>
+         <padding>
+            <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+         </padding>
+      </HBox>
+   </children>
+   <stylesheets>
+      <URL value="@../css/moduloautentificacion.css" />
+      <URL value="@../css/styles.css" />
+   </stylesheets>
+</StackPane>

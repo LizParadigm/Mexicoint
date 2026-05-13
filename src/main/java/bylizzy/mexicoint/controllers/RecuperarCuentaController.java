@@ -4,21 +4,24 @@
  */
 package bylizzy.mexicoint.controllers;
 
+import bylizzy.mexicoint.interfaces.ConfigListenerInterface;
 import bylizzy.mexicoint.services.RecuperarCuentaService;
+import bylizzy.mexicoint.utils.RutasService;
 import bylizzy.mexicoint.utils.ValidacionesService;
 import bylizzy.mexicoint.utils.ValidacionesService.Validacion;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
@@ -27,7 +30,7 @@ import javafx.scene.text.Text;
  *
  * @author La rana
  */
-public class RecuperarCuentaController implements Initializable {
+public class RecuperarCuentaController implements Initializable ,ConfigListenerInterface {
 
     @FXML
     private Button btn_paso_1;
@@ -73,40 +76,34 @@ public class RecuperarCuentaController implements Initializable {
 
     @FXML
     private Text texto_instruccion;
+    
+    @FXML
+            private ImageView icon_cerrar;
 
     /* VARIABLESD DE CONTROL */
     RecuperarCuentaService control = new RecuperarCuentaService();
     ValidacionesService validar = new ValidacionesService();
+    RutasService rut=new RutasService();
+
+    private final StringProperty cambiarControlador = new SimpleStringProperty();
+
+    @Override
+    public StringProperty cambiarControlador() {
+        return cambiarControlador;
+    }
 
     @Override
     public void initialize(URL url ,ResourceBundle rb) {
-        // TODO
-        campo_curp.setTextFormatter(
-                crearFormato(
-                        validar::regexCurp ,
-                        true
-                )
-        );
+        controlarVisibilidad();
 
-        campo_codigo.setTextFormatter(
-                crearFormato(
-                        validar::regexCodigo ,
-                        false
-                )
-        );
-
-        campo_contrasena.setTextFormatter(
-                crearFormato(
-                        validar::regexContrasena ,
-                        false
-                )
-        );
-        campo_confirmar_contrasena.setTextFormatter(
-                crearFormato(
-                        validar::regexContrasena ,
-                        false
-                )
-        );
+        campo_curp.setTextFormatter(control.crearFormato(validar::regexCurp ,true));
+        campo_codigo.setTextFormatter(control.crearFormato(validar::regexCodigo ,false));
+        campo_contrasena.setTextFormatter(control.crearFormato(validar::regexContrasena ,false));
+    }
+    
+    @FXML
+    public void cerrar(MouseEvent event){
+        redireccionarHijo(rut.INICIAR_SESION);
     }
 
     @FXML
@@ -115,7 +112,7 @@ public class RecuperarCuentaController implements Initializable {
         Validacion curp = validar.curp(campo_curp.getText());
         if (curp.estado()) {
             //si todo va bien
-            controlarVisibilidad(control.getPaso());
+            controlarVisibilidad();
         } else {
             error_curp.setText(curp.mensaje());
         }
@@ -127,7 +124,7 @@ public class RecuperarCuentaController implements Initializable {
         Validacion codigo = validar.codigo(campo_codigo.getText());
         if (codigo.estado()) {
             //si todo va bien
-            controlarVisibilidad(control.getPaso());
+            controlarVisibilidad();
         } else {
             //si sale mal
             error_codigo.setText(codigo.mensaje());
@@ -149,51 +146,39 @@ public class RecuperarCuentaController implements Initializable {
         }
     }
 
-    public static TextFormatter<String> crearFormato(Predicate<String> validacion ,boolean mayusculas) {
-        return new TextFormatter<>(change -> {
-            String texto = change.getControlNewText();
-
-            if (validacion.test(texto)) {
-                if (mayusculas) {
-                    change.setText(change.getText().toUpperCase());
-                }
-                return change;
-            }
-            return null;
-
-        });
-    }
-
-    private void controlarVisibilidad(int paso) {
-        cambiarVisibilidad(datos_paso_1 ,false);
-        cambiarVisibilidad(datos_paso_2 ,false);
-        cambiarVisibilidad(datos_paso_3 ,false);
-        cambiarVisibilidad(btn_paso_1 ,false);
-        cambiarVisibilidad(btn_paso_2 ,false);
-        cambiarVisibilidad(btn_paso_3 ,false);
+    private void controlarVisibilidad() {
+        control.cambiarVisibilidad(datos_paso_1 ,false);
+        control.cambiarVisibilidad(btn_paso_1 ,false);
+        control.cambiarVisibilidad(datos_paso_2 ,false);
+        control.cambiarVisibilidad(btn_paso_2 ,false);
+        control.cambiarVisibilidad(datos_paso_3 ,false);
+        control.cambiarVisibilidad(btn_paso_3 ,false);
 
         control.instrucciones();
         texto_instruccion.setText(control.getInstruccion());
 
-        switch (paso) {
+        switch (control.getPaso()) {
             case 1:
-                cambiarVisibilidad(datos_paso_2 ,true);
-                cambiarVisibilidad(btn_paso_2 ,true);
+                control.cambiarVisibilidad(datos_paso_1 ,true);
+                control.cambiarVisibilidad(btn_paso_1 ,true);
                 control.siguientePaso();
                 break;
             case 2:
-                cambiarVisibilidad(datos_paso_3 ,true);
-                cambiarVisibilidad(btn_paso_3 ,true);
+                control.cambiarVisibilidad(datos_paso_2 ,true);
+                control.cambiarVisibilidad(btn_paso_2 ,true);
                 control.siguientePaso();
                 break;
+            case 3:
+                control.cambiarVisibilidad(datos_paso_3 ,true);
+                control.cambiarVisibilidad(btn_paso_3 ,true);
             default:
                 break;
         }
     }
 
-    private void cambiarVisibilidad(Node nodo ,boolean estado) {
-        nodo.setVisible(estado);
-        nodo.setManaged(estado);
+    @FXML
+    private void redireccionarHijo(String nuevaRuta) {
+        cambiarControlador.set(nuevaRuta);
     }
 
 }

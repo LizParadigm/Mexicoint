@@ -339,7 +339,7 @@ public class ValidacionesService {
     }
 
     public boolean regexContrasena(String dato) {
-        return dato.matches("^(?=.*[A-Z])(?=.*[\\W_]).[a-z0-9].{0,55}$");
+        return dato.matches("[a-zA-Z\\d\\W]{0,55}");
     }
 
     public boolean caracterMayus(String dato) {

@@ -5,22 +5,17 @@
 package bylizzy.mexicoint.controllers;
 
 import bylizzy.mexicoint.App;
+import bylizzy.mexicoint.models.ContenidoHijo;
 import bylizzy.mexicoint.models.Producto;
 import bylizzy.mexicoint.services.EncabezadoService;
-import bylizzy.mexicoint.utils.ControlVista;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.SplitPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -62,6 +57,7 @@ public class EncabezadoController implements Initializable {
 
     /* VARIABLES DE CONTROL */
     EncabezadoService control = new EncabezadoService();
+    ContenidoHijo escenario;
 
     /* BOTONES Y ACCIONES */
     @FXML
@@ -94,9 +90,7 @@ public class EncabezadoController implements Initializable {
 
         //tamaño del overlay
         Platform.runLater(() -> {
-            Scene scene = overlay.getScene();
-            overlay.widthProperty().bind(scene.widthProperty());
-            overlay.heightProperty().bind(scene.heightProperty());
+            escenario.overlay(overlay);
         });
 
         //cargar productos del cliente

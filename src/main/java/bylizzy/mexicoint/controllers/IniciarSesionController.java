@@ -4,30 +4,31 @@
  */
 package bylizzy.mexicoint.controllers;
 
-import bylizzy.mexicoint.App;
-import bylizzy.mexicoint.services.IniciarSesionService;
-import bylizzy.mexicoint.utils.ControlVista;
+import static bylizzy.mexicoint.App.cambiarVista;
+import bylizzy.mexicoint.interfaces.ConfigListenerInterface;
+import bylizzy.mexicoint.models.ContenidoHijo;
+import static bylizzy.mexicoint.models.Controlador.darFormato;
+import bylizzy.mexicoint.utils.RutasService;
 import bylizzy.mexicoint.utils.ValidacionesService;
 import bylizzy.mexicoint.utils.ValidacionesService.Validacion;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
  *
  * @author La rana
  */
-public class IniciarSesionController implements Initializable {
+public class IniciarSesionController implements Initializable ,ConfigListenerInterface {
 
     @FXML
     private TextField campo_curp;
@@ -41,44 +42,30 @@ public class IniciarSesionController implements Initializable {
     @FXML
     private Label error_contrasena;
 
-    @FXML
-    private Button btn_iniciarSesion;
-
-    @FXML
-    private Button btn_registrarme;
-
-    @FXML
-    private Text text_aqui;
-
-    /* variables de control */
+    // VARIABLES DE CONTROL
     ValidacionesService validar = new ValidacionesService();
+    ContenidoHijo controlHijo = new ContenidoHijo();
+    RutasService rut = new RutasService();
+
+    private final StringProperty cambiarControlador = new SimpleStringProperty();
+
+    @Override
+    public StringProperty cambiarControlador() {
+        return cambiarControlador;
+    }
 
     @Override
     public void initialize(URL url ,ResourceBundle rb) {
-        campo_curp.setTextFormatter(new TextFormatter<>(change -> {
-            String texto = change.getControlNewText();
-            if (validar.alfanumerico(texto) && texto.length() <= 18) {
-                //convertIR a mayusculas de una vez
-                change.setText(change.getText().toUpperCase());
-                return change;
-            }
-            return null;
-        }));
 
-        campo_contrasena.setTextFormatter(new TextFormatter<>(change -> {
-            String texto = change.getControlNewText();
-
-            if (texto.length() <= 50) {
-                return change;
-            }
-            return null;
-        }));
+        campo_curp.setTextFormatter(darFormato(validar::regexCurp ,true));
+        campo_contrasena.setTextFormatter(darFormato(validar::regexContrasena ,false));
     }
 
     @FXML
     private void iniciarSesion(ActionEvent event) {
         Validacion curp = validar.curp(campo_curp.getText());
         Validacion contra = validar.contrasena(campo_contrasena.getText());
+
         //validaciones front
         if (curp.estado() && contra.estado()) { //si sale bien
             error_curp.setText(curp.mensaje());
@@ -96,7 +83,7 @@ public class IniciarSesionController implements Initializable {
     @FXML
     void recuperarCuenta(MouseEvent event) {
         try {
-            //App.abrirModal(ControlVista.RECUPERAR_CUENTA);
+            redireccionarHijo(rut.RECUPERAR_CUENTA);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -106,11 +93,15 @@ public class IniciarSesionController implements Initializable {
     @FXML
     void registrar(ActionEvent event) {
         try {
-            App.cambiarVista(ControlVista.REGISTRAR_CLIENTE);
+            redireccionarHijo(rut.REGISTRAR_CLIENTE);
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
     }
 
+    @FXML
+    private void redireccionarHijo(String nuevaRuta) {
+        cambiarControlador.set(nuevaRuta);
+    }
 }

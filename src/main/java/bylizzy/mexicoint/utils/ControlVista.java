@@ -4,14 +4,15 @@
  */
 package bylizzy.mexicoint.utils;
 
+import javafx.scene.Scene;
+
 /**
  *
  * @author La rana
  */
 public class ControlVista {
-
     // COMPONENTES
-    public static String INICIA_SESION = "iniciarSesion.fxml";
+    public static String INICIAR_SESION = "iniciarSesion.fxml";
     public static String REGISTRAR_CLIENTE = "registrar.fxml";
     public static String RECUPERAR_CUENTA = "recuperarCuenta.fxml";
 
@@ -25,4 +26,5 @@ public class ControlVista {
     public static String DATOS_PRODUCTOS_CLIENTE = "/bylizzy/mexicoint/data/productos.json";
     public static String DATOS_PRODUCTOS_SOLICITABLES_CLIENTE = "/bylizzy/mexicoint/data/productosSolicitables.json";
     public static String DATOS_DOCUMENTOS_SOLICITADOS = "/bylizzy/mexicoint/data/documentos.json";
+
 }
