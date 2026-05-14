@@ -20,6 +20,15 @@ public class ValidacionesService {
     public record Validacion(boolean estado ,String mensaje) {
 
     }
+    
+    
+    public Validacion cuentaExiste(){
+        return new Validacion(false,"Error desconocido.");
+    }
+    
+    public Validacion cuentaContraseñaCorrecta(){
+        return new Validacion(false,"Error desconocido");
+    }
 
     /*
      * CURP 

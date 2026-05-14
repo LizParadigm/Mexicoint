@@ -5,6 +5,7 @@
 package bylizzy.mexicoint.controllers;
 
 import static bylizzy.mexicoint.App.cambiarVista;
+import bylizzy.mexicoint.data.api.AutentificacionApi;
 import bylizzy.mexicoint.interfaces.ConfigListenerInterface;
 import bylizzy.mexicoint.models.ContenidoHijo;
 import static bylizzy.mexicoint.models.Controlador.darFormato;
@@ -44,8 +45,8 @@ public class IniciarSesionController implements Initializable ,ConfigListenerInt
 
     // VARIABLES DE CONTROL
     ValidacionesService validar = new ValidacionesService();
-    ContenidoHijo controlHijo = new ContenidoHijo();
     RutasService rut = new RutasService();
+    AutentificacionApi api=new AutentificacionApi();
 
     private final StringProperty cambiarControlador = new SimpleStringProperty();
 
@@ -68,10 +69,10 @@ public class IniciarSesionController implements Initializable ,ConfigListenerInt
 
         //validaciones front
         if (curp.estado() && contra.estado()) { //si sale bien
-            error_curp.setText(curp.mensaje());
-            error_contrasena.setText(contra.mensaje());
-            //IniciarSesionService.
-            //redireccionamos al home
+            //usuario exista
+            //usuario tenga la contraseña correcta a su cuenta
+            
+            redireccionarHijo(rut.MODULO_CLIENTE);
 
         } else {
             //si sale mal

@@ -17,16 +17,16 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 
 public class ModuloAutentificacionController implements Initializable {
-    
+
     @FXML
     private HBox fondo;
-    
+
     @FXML
     private Pane fondo_1;
-    
+
     @FXML
     private Pane fondo_2;
-    
+
     @FXML
     private StackPane contenedor_controladores;
 
@@ -60,16 +60,21 @@ public class ModuloAutentificacionController implements Initializable {
 
             //contenido
             FXMLLoader vistaCargada = controlHijo.cargarHijo(contenedorPadre ,fxml);
+
             //se añade la interfaz del listener
             ConfigListenerInterface controlador = vistaCargada.getController();
+
             if (fxml.equals(rut.RECUPERAR_CUENTA)) {
                 control.cambiarClaseCSS(fondo_2);
                 control.cambiarVisibilidad(contenedor_logo ,false);
+            } else if (fxml.equals(rut.MODULO_CLIENTE)) {
+                controlHijo.cambiarVista(fxml);
             } else {
                 control.cambiarClaseCSS(fondo_1);
                 control.cambiarVisibilidad(contenedor_logo ,true);
             }
-//listener:
+
+            //listener:
             configurarListener(controlador);
 
         } catch (IOException e) {
@@ -79,6 +84,7 @@ public class ModuloAutentificacionController implements Initializable {
 
     private void actualizarContenedorHijo(String fxmlNuevo) throws IOException {
         controlHijo.borrarHijo(contenedor_controladores);
+
         contenedorHijo(contenedor_controladores ,fxmlNuevo);
     }
 

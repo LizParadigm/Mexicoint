@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package bylizzy.mexicoint.models;
 
 import bylizzy.mexicoint.utils.ManejarEscenario;
@@ -13,10 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 
-/**
- *
- * @author La rana
- */
 public class ContenidoHijo extends ManejarEscenario {
 
     public FXMLLoader cargarFXMLHijo(String fxml) throws IOException {

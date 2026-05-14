@@ -20,7 +20,7 @@ public class RutasService {
 
     // MODULOS
     public static String MODULO_AUTENTIFICACION="/bylizzy/mexicoint/views/moduloAutentificacion.fxml";
-    public static String LOGEAR = "/bylizzy/mexicoint/views/homeCliente.fxml"; 
+    public static String MODULO_CLIENTE = "/bylizzy/mexicoint/views/moduloCliente.fxml"; 
 
     //CRUD
     public static String DATOS_PRODUCTOS_CLIENTE = "/bylizzy/mexicoint/data/productos.json";
