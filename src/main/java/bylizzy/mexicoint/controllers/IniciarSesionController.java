@@ -5,10 +5,11 @@
 package bylizzy.mexicoint.controllers;
 
 import static bylizzy.mexicoint.App.cambiarVista;
-import bylizzy.mexicoint.data.api.AutentificacionApi;
+import bylizzy.mexicoint.data.dto.autentificacion.AutentificacionApi;
 import bylizzy.mexicoint.interfaces.ConfigListenerInterface;
 import bylizzy.mexicoint.models.ContenidoHijo;
 import static bylizzy.mexicoint.models.Controlador.darFormato;
+import bylizzy.mexicoint.services.IniciarSesionService;
 import bylizzy.mexicoint.utils.RutasService;
 import bylizzy.mexicoint.utils.ValidacionesService;
 import bylizzy.mexicoint.utils.ValidacionesService.Validacion;
@@ -44,9 +45,10 @@ public class IniciarSesionController implements Initializable ,ConfigListenerInt
     private Label error_contrasena;
 
     // VARIABLES DE CONTROL
+    IniciarSesionService control = new IniciarSesionService();
     ValidacionesService validar = new ValidacionesService();
     RutasService rut = new RutasService();
-    AutentificacionApi api=new AutentificacionApi();
+    AutentificacionApi api = new AutentificacionApi();
 
     private final StringProperty cambiarControlador = new SimpleStringProperty();
 
@@ -69,11 +71,18 @@ public class IniciarSesionController implements Initializable ,ConfigListenerInt
 
         //validaciones front
         if (curp.estado() && contra.estado()) { //si sale bien
-            //usuario exista
-            //usuario tenga la contraseña correcta a su cuenta
-            
-            redireccionarHijo(rut.MODULO_CLIENTE);
+            //consumos de api / validaciones desde el backend
+            Validacion acceso = control.entrar(campo_curp.getText() ,campo_contrasena.getText());
 
+            if (acceso.estado()) {
+                //if (correcto.estado()) {
+                redireccionarHijo(rut.MODULO_CLIENTE);
+//                } else {
+//                    error_contrasena.setText(correcto.mensaje());
+//                }
+            } else {
+                error_curp.setText(acceso.mensaje());
+            }
         } else {
             //si sale mal
             error_curp.setText(curp.mensaje());

@@ -21,7 +21,7 @@ public class EncabezadoService {
 
     public EncabezadoService() {
         this.productosPoseidos = ClienteApi.solicitarProducto();
-        this.productosSolicitables= ClienteApi.solicitarProductosSolicitables();
+     //   this.productosSolicitables= ClienteApi.solicitarProductosSolicitables();
     }
 
     public Productos getProductosPoseidos() {

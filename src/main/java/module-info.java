@@ -4,6 +4,8 @@ module bylizzy.mexicoint {
     requires java.base;
     requires com.google.gson;
     requires com.fasterxml.jackson.databind;
+    requires java.net.http;
+    
 
     exports bylizzy.mexicoint;
 

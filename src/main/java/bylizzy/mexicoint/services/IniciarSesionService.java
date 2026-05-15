@@ -4,10 +4,10 @@
  */
 package bylizzy.mexicoint.services;
 
-import bylizzy.mexicoint.data.api.AutentificacionApi;
-import bylizzy.mexicoint.data.dto.IniciarSesionDTO;
-import bylizzy.mexicoint.models.Sesion;
-import bylizzy.mexicoint.models.Usuario;
+import bylizzy.mexicoint.data.dto.autentificacion.AutentificacionApi;
+import bylizzy.mexicoint.data.dto.autentificacion.SolicitarAccesoResponseDTO;
+import bylizzy.mexicoint.utils.ValidacionesService.Validacion;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 /**
  *
@@ -15,20 +15,18 @@ import bylizzy.mexicoint.models.Usuario;
  */
 public class IniciarSesionService {
 
-    public void entrar(String curp ,String contrasena) {
+    public AutentificacionApi servidor = new AutentificacionApi();
+
+    public Validacion entrar(String curp ,String contrasena) throws InterruptedException, JsonProcessingException {
         //llama el api
-        //IniciarSesionDTO dto = AutentificacionApi.validarCredenciales(curp ,contrasena);
-        //transforma dto en modelo
-        //Usuario usuario = convertirDTO(dto);
-        //guarda sesion
-        //Sesion sesion = new Sesion(usuario ,dto.token);
-        //return usuario;
+        SolicitarAccesoResponseDTO dto = servidor.solicitarAcceso(curp ,contrasena);
+
+        if (dto != null && dto.token != null) {
+            return new Validacion(true ,"");
+        } else {
+            return new Validacion(false ,"CURP o contraseña incorrectos");
+        }
+
     }
 
-    private Usuario convertirDTO(IniciarSesionDTO dto) {
-        Usuario u = new Usuario();
-        u.setCurp(dto.curp);
-        u.setRool(dto.rol);
-        return u;
-    }
 }

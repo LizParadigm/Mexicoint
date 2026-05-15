@@ -20,14 +20,21 @@ public class ValidacionesService {
     public record Validacion(boolean estado ,String mensaje) {
 
     }
-    
-    
-    public Validacion cuentaExiste(){
-        return new Validacion(false,"Error desconocido.");
+
+    /*
+         * CUENTA EXISTENTE
+         * debe existir en la base de datos
+     */
+    public Validacion cuentaExiste(String curp) {
+        return new Validacion(false ,"Error desconocido.");
     }
-    
-    public Validacion cuentaContraseñaCorrecta(){
-        return new Validacion(false,"Error desconocido");
+
+    /*
+         * CONTRASEÑA CORRECTA 
+         * la contraseña debe ser correcta segun los datos del usuario en la base de datos
+     */
+    public Validacion cuentaContrasenaCorrecta(String contrasena) {
+        return new Validacion(false ,"Error desconocido.");
     }
 
     /*
@@ -283,17 +290,16 @@ public class ValidacionesService {
      * longitud exacta de 9 caracteres
      */
     public Validacion codigo(String codigo) {
-        if(codigo.length()==9){
-            return new Validacion(true, "");
+        if (codigo.length() == 9) {
+            return new Validacion(true ,"");
+        } else if (codigo.length() <= 9) {
+            return new Validacion(false ,"Codigo demaciado corto.");
         }
-        else if(codigo.length()<=9){
-            return new Validacion(false,"Codigo demaciado corto.");
-        }
-        return new Validacion(false,"Error desconocido.");
+        return new Validacion(false ,"Error desconocido.");
     }
-    
-    public Validacion codigoCorrecto(String codigo){
-        return new Validacion(false,"Error desconocido");
+
+    public Validacion codigoCorrecto(String codigo) {
+        return new Validacion(false ,"Error desconocido");
     }
 
     /*
@@ -359,7 +365,7 @@ public class ValidacionesService {
         return dato.matches(".*[^a-zA-Z0-9\\s].*");
     }
 
-    public boolean regexCodigo(String dato){
+    public boolean regexCodigo(String dato) {
         return dato.matches("[0-9]{0,9}");
     }
 }
