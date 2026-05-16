@@ -11,6 +11,8 @@ import bylizzy.mexicoint.utils.ValidacionesService;
 import bylizzy.mexicoint.utils.ValidacionesService.Validacion;
 import bylizzy.mexicoint.utils.CatalogoUbicacionesService;
 import bylizzy.mexicoint.utils.RutasService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -216,14 +218,14 @@ public class RegistrarController implements Initializable ,ConfigListenerInterfa
         //VISIBILIDAD
         controlarVisibilidad();
     }
-    
+
     @FXML
-    private void cerrar(MouseEvent event){
+    private void cerrar(MouseEvent event) {
         redireccionarHijo(rut.INICIAR_SESION);
     }
 
     @FXML
-    private void paso_1(ActionEvent event) {
+    private void paso_1(ActionEvent event) throws InterruptedException {
         //Validar datos 1 solo front
         Validacion nombre = validar.nombre(campo_nombre.getText());
         Validacion apellido_p = validar.apellido(campo_apellido_p.getText());
@@ -233,11 +235,13 @@ public class RegistrarController implements Initializable ,ConfigListenerInterfa
 
         //if (true) {
         if (nombre.estado() && apellido_p.estado() && apellido_m.estado() && cumpleanos.estado() && curp.estado()) {
-            //if (false) {
-            //se necesitan hacer validaciones de existencia de curp
-            //si sale mal
-            //mostrar mensaje de error en error_curp  frenar esta funcion
-            controlarVisibilidad();
+
+            Validacion existe = control.validarCurp(campo_curp.getText());
+            if (existe.estado()) {
+                controlarVisibilidad();
+            } else {
+                error_curp.setText(existe.mensaje());
+            }
         } else {
             error_nombre.setText(nombre.mensaje());
             error_apellido_p.setText(apellido_p.mensaje());
@@ -276,21 +280,25 @@ public class RegistrarController implements Initializable ,ConfigListenerInterfa
     }
 
     @FXML
-    private void paso_3(ActionEvent event) {
+    private void paso_3(ActionEvent event) throws IOException ,JsonProcessingException ,InterruptedException {
         //validar datos 3 solo front
         Validacion contrasena = validar.contrasena(campo_contrasena.getText());
         Validacion confirmar = validar.contrasenaCorrecta(campo_contrasena.getText() ,campo_confirmar_contrasena.getText());
 
         //if (false) {
         if (contrasena.estado() && confirmar.estado()) {
-            //si sale bien
             //solicitar al servidor crear una cuenta cliente
+            Validacion creado = control.crearCliente(campo_nombre.getText() ,campo_apellido_p.getText() ,campo_apellido_m.getText() ,campo_fecha_nacimiento.getEditor().getText() ,campo_curp.getText() ,campo_calle.getText() ,campo_num_ext.getText() ,campo_num_int.getText() ,campo_colonia_barrio.getText() ,campo_codigo_postal.getText() ,campo_ciudad_municipio.getText() ,campo_estado.getValue().toString() ,campo_pais.getValue().toString() ,campo_contrasena.getText());
+            if(creado.estado()){
             try {
                 //entrar al home cliente
                 redireccionarHijo(rut.INICIAR_SESION);
                 //App.cambiarVista(ControlVista.INICIAR_SESION);
             } catch (Exception e) {
                 //si sale mal mostrar mensaje de que salio mal y explicar por que
+            }
+            }else{
+                error_contrasena.setText(creado.mensaje());
             }
         } else {
             error_contrasena.setText(contrasena.mensaje());

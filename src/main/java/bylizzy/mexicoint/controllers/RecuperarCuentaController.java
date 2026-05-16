@@ -76,14 +76,14 @@ public class RecuperarCuentaController implements Initializable ,ConfigListenerI
 
     @FXML
     private Text texto_instruccion;
-    
+
     @FXML
-            private ImageView icon_cerrar;
+    private ImageView icon_cerrar;
 
     /* VARIABLESD DE CONTROL */
     RecuperarCuentaService control = new RecuperarCuentaService();
     ValidacionesService validar = new ValidacionesService();
-    RutasService rut=new RutasService();
+    RutasService rut = new RutasService();
 
     private final StringProperty cambiarControlador = new SimpleStringProperty();
 
@@ -100,31 +100,41 @@ public class RecuperarCuentaController implements Initializable ,ConfigListenerI
         campo_codigo.setTextFormatter(control.crearFormato(validar::regexCodigo ,false));
         campo_contrasena.setTextFormatter(control.crearFormato(validar::regexContrasena ,false));
     }
-    
+
     @FXML
-    public void cerrar(MouseEvent event){
+    public void cerrar(MouseEvent event) {
         redireccionarHijo(rut.INICIAR_SESION);
     }
 
     @FXML
-    private void paso_1(ActionEvent event) {
+    private void paso_1(ActionEvent event) throws InterruptedException {
         //validamos datos 1
         Validacion curp = validar.curp(campo_curp.getText());
         if (curp.estado()) {
-            //si todo va bien
-            controlarVisibilidad();
+            Validacion existe = control.validarCurp(campo_curp.getText());
+            if (existe.estado()) {
+                controlarVisibilidad();
+
+            } else {
+                error_curp.setText(existe.mensaje());
+            }
         } else {
             error_curp.setText(curp.mensaje());
         }
     }
 
     @FXML
-    private void paso_2(ActionEvent event) {
+    private void paso_2(ActionEvent event) throws InterruptedException {
         //validamos datos 1
         Validacion codigo = validar.codigo(campo_codigo.getText());
         if (codigo.estado()) {
-            //si todo va bien
-            controlarVisibilidad();
+            Validacion correcto = control.validarCodigo(campo_codigo.getText());
+
+            if (correcto.estado()) {
+                controlarVisibilidad();
+            } else {
+                error_codigo.setText(correcto.mensaje());
+            }
         } else {
             //si sale mal
             error_codigo.setText(codigo.mensaje());
@@ -132,11 +142,18 @@ public class RecuperarCuentaController implements Initializable ,ConfigListenerI
     }
 
     @FXML
-    private void paso_3(ActionEvent event) {
+    private void paso_3(ActionEvent event) throws InterruptedException {
         //validamos datos 1
         Validacion contrasena = validar.contrasena(campo_contrasena.getText());
         Validacion confirmar_contrasena = validar.confirmarContrasena(campo_contrasena.getText() ,campo_confirmar_contrasena.getText());
         if (contrasena.estado() && confirmar_contrasena.estado()) {
+            Validacion cambiado= control.cambiarContrasena(campo_curp.getText(),campo_codigo.getText(),campo_contrasena.getText());
+            if(cambiado.estado()){
+                
+            }
+            else{
+                error_contrasena.setText(cambiado.mensaje());
+            }
             //si todo va bien
             //ir al home
         } else {

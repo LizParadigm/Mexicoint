@@ -8,15 +8,13 @@ package bylizzy.mexicoint.data.dto.autentificacion;
  *
  * @author La rana
  */
-public class SolicitarAccesoResponseDTO {
-
+public class ComprobarCodigoResponseDTO {
     private boolean estado;
     private String mensaje;
-    private String rol;
-    private String token;
-    private String curp;
 
-    public SolicitarAccesoResponseDTO() {
+    public ComprobarCodigoResponseDTO(boolean estado ,String mensaje) {
+        this.estado = estado;
+        this.mensaje = mensaje;
     }
 
     public boolean isEstado() {
@@ -34,28 +32,7 @@ public class SolicitarAccesoResponseDTO {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getCurp() {
-        return curp;
-    }
-
-    public void setCurp(String curp) {
-        this.curp = curp;
-    }
+    
+    
+    
 }

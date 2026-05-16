@@ -4,14 +4,11 @@
  */
 package bylizzy.mexicoint.data.dto.autentificacion;
 
+import bylizzy.mexicoint.utils.RutasApiService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
 import java.net.URI;
-import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -22,11 +19,42 @@ import java.net.http.HttpResponse;
  */
 public class AutentificacionApi {
 
-    //FACTORIZAR
+    RutasApiService rutApi = new RutasApiService();
+
+    //COMUN
+    public ComprobarCurpResponseDTO comprobarCurp(String curp) throws InterruptedException {
+        try {
+            ComprobarCurpRequestDTO requestDto = new ComprobarCurpRequestDTO(curp);
+
+            ObjectMapper mapper = new ObjectMapper();
+
+            String json = mapper.writeValueAsString(requestDto);
+
+            HttpClient client = HttpClient.newHttpClient();
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(rutApi.getComprobarCurp()))
+                    .header("Content-Type" ,"aplication/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(json))
+                    .build();
+
+            HttpResponse<String> response = client.send(request ,HttpResponse.BodyHandlers.ofString());
+
+            if (response.statusCode() == 200) {
+                //json a dto
+                return mapper.readValue(response.body() ,ComprobarCurpResponseDTO.class);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    // INICIAR SESION
     public SolicitarAccesoResponseDTO solicitarAcceso(String curp ,String contrasena) throws JsonProcessingException ,InterruptedException {
         try {
             //crear SolicitarAccesoRequestDTO
-            SolicitarAccesoRequestDTO requestDTO = new SolicitarAccesoRequestDTO(curp,contrasena);
+            SolicitarAccesoRequestDTO requestDTO = new SolicitarAccesoRequestDTO(curp ,contrasena);
 
             //realizar la llamada al api
             ObjectMapper mapper = new ObjectMapper();
@@ -38,7 +66,7 @@ public class AutentificacionApi {
 
             //crear request http
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://localhost:8080/auth/login"))
+                    .uri(URI.create(rutApi.getSolicitarAcceso()))
                     .header("Content-Type" ,"application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(json))
                     .build();
@@ -56,17 +84,83 @@ public class AutentificacionApi {
             e.printStackTrace();
             return null;
         }
-
         return null;
-
     }
 
-    private SolicitarAccesoResponseDTO parseResponse(String json) {
-        // Simulación (usa Gson en real)
-        SolicitarAccesoResponseDTO dto = new SolicitarAccesoResponseDTO();
-        dto.curp = "VEGA780615HDFLML08";
-        dto.rol = "ADMIN";
-        dto.token = "ejemplodetoken123bien123cabron321";
-        return dto;
+    //REGISTRAR CLIENTE
+    public CrearClienteResponseDTO crearCliente(String nombre ,String apellido_p ,String apellido_m ,String fecha_nacimiento ,String curp ,String calle ,String num_ext ,String num_int ,String colonia_barrio ,String codigo_postal ,String ciudad_municipio ,String estado ,String pais ,String contrasena) throws JsonProcessingException ,IOException ,InterruptedException {
+        try {
+            CrearClienteRequestDTO requestDTO = new CrearClienteRequestDTO(nombre ,apellido_p ,apellido_m ,fecha_nacimiento ,curp ,calle ,num_ext ,num_int ,colonia_barrio ,codigo_postal ,ciudad_municipio ,estado ,pais ,contrasena);
+
+            ObjectMapper mapper = new ObjectMapper();
+            String json = mapper.writeValueAsString(requestDTO);
+
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(rutApi.getSolicitarAcceso()))
+                    .header("Content-Type" ,"application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(json))
+                    .build();
+
+            HttpResponse<String> response = client.send(request ,HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 200) {
+                //json a dto
+                return mapper.readValue(response.body() ,CrearClienteResponseDTO.class);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //RECUPERAR CUENTA
+    public ComprobarCodigoResponseDTO comprobarCodigo(String codigo) throws InterruptedException {
+        try {
+            ComprobarCodigoRequestDTO requestDTO = new ComprobarCodigoRequestDTO(codigo);
+
+            ObjectMapper mapper = new ObjectMapper();
+            String json = mapper.writeValueAsString(requestDTO);
+
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(rutApi.getComprobarCodigo()))
+                    .header("Content-Type" ,"application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(json))
+                    .build();
+
+            HttpResponse<String> response = client.send(request ,HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 200) {
+                //json a dto
+                return mapper.readValue(response.body() ,ComprobarCodigoResponseDTO.class);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public CambiarContrasenaResponseDTO cambiarContrasena(String curp ,String codigo ,String contrasena) throws InterruptedException {
+        try {
+            CambiarContrasenaRequestDTO requestDTO = new CambiarContrasenaRequestDTO(curp ,codigo ,contrasena);
+
+            ObjectMapper mapper = new ObjectMapper();
+            String json = mapper.writeValueAsString(requestDTO);
+
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(rutApi.getCambiarContrasena()))
+                    .header("Content-Type" ,"application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(json))
+                    .build();
+
+            HttpResponse<String> response = client.send(request ,HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 200) {
+                //json a dto
+                return mapper.readValue(response.body() ,CambiarContrasenaResponseDTO.class);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

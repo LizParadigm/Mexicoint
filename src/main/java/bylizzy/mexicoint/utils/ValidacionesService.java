@@ -21,6 +21,10 @@ public class ValidacionesService {
 
     }
 
+    public record Validacion2(Validacion campo1 ,Validacion campo2) {
+
+    }
+
     /*
          * CUENTA EXISTENTE
          * debe existir en la base de datos

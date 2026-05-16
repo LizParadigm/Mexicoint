@@ -13,6 +13,8 @@ import bylizzy.mexicoint.services.IniciarSesionService;
 import bylizzy.mexicoint.utils.RutasService;
 import bylizzy.mexicoint.utils.ValidacionesService;
 import bylizzy.mexicoint.utils.ValidacionesService.Validacion;
+import bylizzy.mexicoint.utils.ValidacionesService.Validacion2;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
@@ -65,23 +67,23 @@ public class IniciarSesionController implements Initializable ,ConfigListenerInt
     }
 
     @FXML
-    private void iniciarSesion(ActionEvent event) {
+    private void iniciarSesion(ActionEvent event) throws InterruptedException ,JsonProcessingException {
         Validacion curp = validar.curp(campo_curp.getText());
         Validacion contra = validar.contrasena(campo_contrasena.getText());
 
         //validaciones front
         if (curp.estado() && contra.estado()) { //si sale bien
             //consumos de api / validaciones desde el backend
-            Validacion acceso = control.entrar(campo_curp.getText() ,campo_contrasena.getText());
+            Validacion2 respuesta = control.entrar(campo_curp.getText() ,campo_contrasena.getText());
 
-            if (acceso.estado()) {
-                //if (correcto.estado()) {
-                redireccionarHijo(rut.MODULO_CLIENTE);
-//                } else {
-//                    error_contrasena.setText(correcto.mensaje());
-//                }
+            if (respuesta.campo1().estado()) {
+                if (respuesta.campo2().estado()) {
+                    redireccionarHijo(rut.MODULO_CLIENTE);
+                } else {
+                    error_contrasena.setText(respuesta.campo2().mensaje());
+                }
             } else {
-                error_curp.setText(acceso.mensaje());
+                error_curp.setText(respuesta.campo1().mensaje());
             }
         } else {
             //si sale mal
@@ -91,7 +93,8 @@ public class IniciarSesionController implements Initializable ,ConfigListenerInt
     }
 
     @FXML
-    void recuperarCuenta(MouseEvent event) {
+    void recuperarCuenta(MouseEvent event
+    ) {
         try {
             redireccionarHijo(rut.RECUPERAR_CUENTA);
         } catch (Exception e) {
@@ -101,7 +104,8 @@ public class IniciarSesionController implements Initializable ,ConfigListenerInt
     }
 
     @FXML
-    void registrar(ActionEvent event) {
+    void registrar(ActionEvent event
+    ) {
         try {
             redireccionarHijo(rut.REGISTRAR_CLIENTE);
         } catch (Exception e) {
@@ -111,7 +115,8 @@ public class IniciarSesionController implements Initializable ,ConfigListenerInt
     }
 
     @FXML
-    private void redireccionarHijo(String nuevaRuta) {
+    private void redireccionarHijo(String nuevaRuta
+    ) {
         cambiarControlador.set(nuevaRuta);
     }
 }

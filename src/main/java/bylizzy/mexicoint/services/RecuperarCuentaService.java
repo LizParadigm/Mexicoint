@@ -4,20 +4,55 @@
  */
 package bylizzy.mexicoint.services;
 
+import bylizzy.mexicoint.data.dto.autentificacion.AutentificacionApi;
+import bylizzy.mexicoint.data.dto.autentificacion.CambiarContrasenaResponseDTO;
+import bylizzy.mexicoint.data.dto.autentificacion.ComprobarCodigoResponseDTO;
+import bylizzy.mexicoint.data.dto.autentificacion.ComprobarCurpResponseDTO;
 import bylizzy.mexicoint.utils.ControlComun;
+import bylizzy.mexicoint.utils.ValidacionesService.Validacion;
 
 /**
  *
  * @author La rana
  */
-public class RecuperarCuentaService extends ControlComun{
+public class RecuperarCuentaService extends ControlComun {
 
     private String instruccion;
+
+    public AutentificacionApi servidor = new AutentificacionApi();
 
     public RecuperarCuentaService() {
         this.instruccion = "";
     }
 
+    public Validacion validarCurp(String curp) throws InterruptedException {
+        ComprobarCurpResponseDTO dto = servidor.comprobarCurp(curp);
+        if (dto != null) {
+            return new Validacion(true ,"");
+        } else {
+            return new Validacion(dto.isEstado() ,dto.getMensaje());
+        }
+    }
+
+    public Validacion validarCodigo(String codigo) throws InterruptedException {
+        ComprobarCodigoResponseDTO dto = servidor.comprobarCodigo(codigo);
+
+        if (dto != null) {
+            return new Validacion(true ,"");
+        } else {
+            return new Validacion(dto.isEstado() ,dto.getMensaje());
+        }
+
+    }
+
+    public Validacion cambiarContrasena(String curp ,String codigo ,String contrasenaNueva) throws InterruptedException {
+        CambiarContrasenaResponseDTO dto = servidor.cambiarContrasena(curp ,codigo ,contrasenaNueva);
+        if (dto != null) {
+            return new Validacion(true ,"");
+        } else {
+            return new Validacion(dto.isEstado() ,dto.getMensaje());
+        }
+    }
 
     public String instrucciones() {
         switch (getPaso()) {
@@ -34,12 +69,8 @@ public class RecuperarCuentaService extends ControlComun{
         return null;
     }
 
-
     public String getInstruccion() {
         return instruccion;
     }
-    
-    
-
 
 }

@@ -8,22 +8,20 @@ package bylizzy.mexicoint.data.dto.autentificacion;
  *
  * @author La rana
  */
-public class SolicitarAccesoRequestDTO {
-
+public class ComprobarCurpRequestDTO {
     private String curp;
-    private String contrasena;
 
-    public SolicitarAccesoRequestDTO(String curp ,String contrasena) {
-        this.curp = curp;
-        this.contrasena = contrasena;
+    public ComprobarCurpRequestDTO(String curo) {
+        this.curp=curp;
     }
 
     public String getCurp() {
         return curp;
     }
 
-    public String getContrasena() {
-        return contrasena;
+    public void setCurp(String curp) {
+        this.curp = curp;
     }
-
+    
+    
 }
