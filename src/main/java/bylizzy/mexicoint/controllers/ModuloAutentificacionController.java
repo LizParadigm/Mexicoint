@@ -67,7 +67,7 @@ public class ModuloAutentificacionController implements Initializable {
             if (fxml.equals(rut.RECUPERAR_CUENTA)) {
                 control.cambiarClaseCSS(fondo_2);
                 control.cambiarVisibilidad(contenedor_logo ,false);
-            } else if (fxml.equals(rut.MODULO_CLIENTE)) {
+            } else if (fxml.equals(rut.MODULO_USUARIO)) {
                 controlHijo.cambiarVista(fxml);
             } else {
                 control.cambiarClaseCSS(fondo_1);

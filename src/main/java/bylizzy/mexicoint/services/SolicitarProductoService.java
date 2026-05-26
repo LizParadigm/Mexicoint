@@ -5,6 +5,7 @@
 package bylizzy.mexicoint.services;
 
 import bylizzy.mexicoint.data.api.ClienteApi;
+import bylizzy.mexicoint.models.Controlador;
 import bylizzy.mexicoint.models.Documento;
 import bylizzy.mexicoint.models.Documentos;
 
@@ -12,15 +13,28 @@ import bylizzy.mexicoint.models.Documentos;
  *
  * @author La rana
  */
-public class SolicitarProductoService {
+public class SolicitarProductoService extends Controlador {
 
     private String idProducto;
     private String nombreProducto;
     private Documentos documentos;
 
     public SolicitarProductoService() {
-        this.documentos = ClienteApi.verificarDocumentosNecesarios();
+        this.documentos = ClienteApi.verificarDocumentosNecesarioscrud();
     }
+    
+    public void solicitudCompletada(){
+        ClienteApi.procesarSolicitudcrud(this.idProducto);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     public String getIdProducto() {
         return idProducto;

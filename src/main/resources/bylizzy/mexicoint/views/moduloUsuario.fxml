@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bylizzy.mexicoint.controllers.ModuloUsuarioController">
+   <children>
+      <BorderPane styleClass="p5">
+         <top>
+            <StackPane fx:id="contenedor_encabezado" />
+         </top>
+         <center>
+            <StackPane fx:id="contenedor_contenido" styleClass="p1" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding></StackPane>
+         </center>
+      </BorderPane>
+      <StackPane fx:id="contenedor_encabezado_menu" alignment="TOP_LEFT" style="-fx-background-color: rgba(0,0,0,0);" styleClass="p4" />
+      <StackPane fx:id="contenedor_popup" prefHeight="150.0" prefWidth="200.0" />
+   </children>
+   <stylesheets>
+      <URL value="@../css/styles.css" />
+      <URL value="@../css/modulousuario.css" />
+   </stylesheets>
+</StackPane>

@@ -4,10 +4,8 @@
  */
 package bylizzy.mexicoint.controllers;
 
-import static bylizzy.mexicoint.App.cambiarVista;
-import bylizzy.mexicoint.data.dto.autentificacion.AutentificacionApi;
+import bylizzy.mexicoint.data.api.AutentificacionApi;
 import bylizzy.mexicoint.interfaces.ConfigListenerInterface;
-import bylizzy.mexicoint.models.ContenidoHijo;
 import static bylizzy.mexicoint.models.Controlador.darFormato;
 import bylizzy.mexicoint.services.IniciarSesionService;
 import bylizzy.mexicoint.utils.RutasService;
@@ -78,7 +76,7 @@ public class IniciarSesionController implements Initializable ,ConfigListenerInt
 
             if (respuesta.campo1().estado()) {
                 if (respuesta.campo2().estado()) {
-                    redireccionarHijo(rut.MODULO_CLIENTE);
+                    redireccionarHijo(rut.MODULO_USUARIO);
                 } else {
                     error_contrasena.setText(respuesta.campo2().mensaje());
                 }

@@ -11,6 +11,7 @@ import javafx.scene.Scene;
  * @author La rana
  */
 public class ControlVista {
+
     // COMPONENTES
     public static String INICIAR_SESION = "iniciarSesion.fxml";
     public static String REGISTRAR_CLIENTE = "registrar.fxml";
@@ -26,5 +27,9 @@ public class ControlVista {
     public static String DATOS_PRODUCTOS_CLIENTE = "/bylizzy/mexicoint/data/productos.json";
     public static String DATOS_PRODUCTOS_SOLICITABLES_CLIENTE = "/bylizzy/mexicoint/data/productosSolicitables.json";
     public static String DATOS_DOCUMENTOS_SOLICITADOS = "/bylizzy/mexicoint/data/documentos.json";
+    public static String DATOS_PRODUCTOS_INFORMACION_CLIENTE = "/bylizzy/mexicoint/data/datosProducto.json";
+    public static String DATOS_MOVIMIENTOS_INGRESOS_PRODUCTOS = "/bylizzy/mexicoint/data/movimientosIngresosProducto.json";
+    public static String DATOS_MOVIMIENTOS_GASTOS_PRODUCTOS = "/bylizzy/mexicoint/data/movimientosGastosProducto.json";
+    public static String DATOS_MOVIMIENTOS_TODOS_PRODUCTOS = "/bylizzy/mexicoint/data/movimientosTodosProducto.json";
 
 }

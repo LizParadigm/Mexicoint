@@ -13,38 +13,47 @@ import java.net.http.HttpRequest;
  */
 public class RutasApiService {
 
-    private final String base="http://localhost:8080/";
-    
-    private final String autentificacion= this.base+"autentificacion/";
-    
-    private final String solicitarAcceso= this.autentificacion+"solicitaracceso";
-    private final String comprobarCurp=this.autentificacion+"comprobarcurp";
-    private final String crearCliente=this.autentificacion+"crearcliente";
-    private final String comprobarCodigo=this.autentificacion+"comprobarcodigo";
-    private final String cambiarContrasena=this.autentificacion+"cambiarcontrasena";
+    private final String base = "http://localhost:8080/";
 
+    private final String autentificacion = this.base + "autentificacion/";
+
+    private final String solicitarAcceso = this.autentificacion + "solicitaracceso";
+    private final String comprobarCurp = this.autentificacion + "comprobarcurp";
+    private final String crearCliente = this.autentificacion + "crearcliente";
+    private final String comprobarCodigo = this.autentificacion + "comprobarcodigo";
+    private final String cambiarContrasena = this.autentificacion + "cambiarcontrasena";
+
+    private final String cliente = this.base + "cliente/";
+
+    private final String solicitarProductosObtenidos = this.cliente+"solicitarproductosobtenidos";
+    private final String solicitarProductosObtenibles = this.cliente+"solicitarproductosobtenibles";
 
     public String getSolicitarAcceso() {
-        return solicitarAcceso;
+        return this.solicitarAcceso;
     }
 
     public String getComprobarCurp() {
-        return comprobarCurp;
+        return this.comprobarCurp;
     }
 
     public String getCrearCliente() {
-        return crearCliente;
+        return this.crearCliente;
+    }
+
+    public String getComprobarCodigo() {
+        return this.comprobarCodigo;
+    }
+
+    public String getCambiarContrasena() {
+        return this.cambiarContrasena;
     }
     
-    public String getComprobarCodigo(){
-        return comprobarCodigo;
+    public String getSolicitarProductosObtenidos(){
+        return this.solicitarProductosObtenidos;
     }
     
-    
-    public String getCambiarContrasena(){
-        return cambiarContrasena;
+    public String getSolicitarProductosObtenibles(){
+        return this.solicitarProductosObtenibles;
     }
-    
-    
-    
+
 }

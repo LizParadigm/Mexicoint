@@ -10,25 +10,26 @@ package bylizzy.mexicoint.models;
  */
 public class Sesion {
 
-    private static Usuario usuarioActual;
-    private static String token;
+    private String token;
+    private String id;
+    private String rol;
 
-    public static void Sesion(Usuario usuario ,String jwt) {
-        usuarioActual = usuario;
-        token = jwt;
-    }
-
-    public Usuario getUsuario() {
-        return usuarioActual;
+    public Sesion(String token ,String id ,String rol) {
+        this.token = token;
+        this.id = id;
+        this.rol = rol;
     }
 
     public String getToken() {
         return token;
     }
 
-    public static void limpiar() {
-        usuarioActual = null;
-        token = null;
+    public String getId() {
+        return id;
+    }
+
+    public String getRol() {
+        return rol;
     }
 
 }

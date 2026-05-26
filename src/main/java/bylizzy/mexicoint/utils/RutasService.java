@@ -15,12 +15,26 @@ public class RutasService {
     public static String REGISTRAR_CLIENTE = "/bylizzy/mexicoint/views/registrar.fxml";
     public static String RECUPERAR_CUENTA = "/bylizzy/mexicoint/views/recuperarCuenta.fxml";
 
-    public static String ENCABEZADO = "/bylizzy/mexicoint/views/ncabezado.fxml";
+    //TODOS LOS USUARIOS
+    public static String ENCABEZADO = "/bylizzy/mexicoint/views/encabezado.fxml";
+
+    //SOLO CLIENTES
+    public static String MENU_LATERAL_CLIENTE = "/bylizzy/mexicoint/views/menuCliente.fxml";
     public static String SOLICITAR_PRODUCTO = "/bylizzy/mexicoint/views/solicitarProducto.fxml";
+    public static String HOME_CLIENTE = "/bylizzy/mexicoint/views/clienteHome.fxml";
+    public static String HOME_PRODUCTO = "/bylizzy/mexicoint/views/clienteProducto.fxml";
+
+    //SOLO EJECUTIVOS
+    public static String MENU_LATERAL_EJECUTIVO = "/bylizzy/mexicoint/views/menuCliente.fxml";
+    public static String HOME_EJECUTIVO = "/bylizzy/mexicoint/views/homeEjecutivo.fxml";
+    
+    //SOLO ADMINISTRADOR
+    public static String MENU_LATERAL_ADMINISTRADOR = "/bylizzy/mexicoint/views/menuCliente.fxml";
+    public static String HOME_ADMINISTRADOR = "/bylizzy/mexicoint/views/homeAdministrador.fxml";
 
     // MODULOS
-    public static String MODULO_AUTENTIFICACION="/bylizzy/mexicoint/views/moduloAutentificacion.fxml";
-    public static String MODULO_CLIENTE = "/bylizzy/mexicoint/views/moduloCliente.fxml"; 
+    public static String MODULO_AUTENTIFICACION = "/bylizzy/mexicoint/views/moduloAutentificacion.fxml";
+    public static String MODULO_USUARIO = "/bylizzy/mexicoint/views/moduloUsuario.fxml";
 
     //CRUD
     public static String DATOS_PRODUCTOS_CLIENTE = "/bylizzy/mexicoint/data/productos.json";

@@ -1,0 +1,199 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "movimientos": [
+        {
+          "id": 1,
+          "nombre": "movimiento 1",
+          "fecha": "10/04/2004",
+          "monto": "200"
+        },
+        {
+          "id": 2,
+          "nombre": "movimiento 3",
+          "fecha": "11/04/2004",
+          "monto": "100"
+        },
+        {
+          "id": 3,
+          "nombre": "movimiento 5",
+          "fecha": "12/04/2004",
+          "monto": "3132"
+        },
+        {
+          "id": 4,
+          "nombre": "movimiento 7",
+          "fecha": "13/04/2004",
+          "monto": "123"
+        },
+        {
+          "id": 5,
+          "nombre": "movimiento 9",
+          "fecha": "14/04/2004",
+          "monto": "200"
+        },
+        {
+          "id": 6,
+          "nombre": "movimiento 11",
+          "fecha": "15/04/2004",
+          "monto": "100"
+        },
+        {
+          "id": 7,
+          "nombre": "movimiento 13",
+          "fecha": "16/04/2004",
+          "monto": "3132"
+        },
+        {
+          "id": 8,
+          "nombre": "movimiento 15",
+          "fecha": "17/04/2004",
+          "monto": "123"
+        },
+        {
+          "id": 9,
+          "nombre": "movimiento 17",
+          "fecha": "18/04/2004",
+          "monto": "200"
+        },
+        {
+          "id": 10,
+          "nombre": "movimiento 19",
+          "fecha": "19/04/2004",
+          "monto": "100"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "movimientos": [
+        {
+          "id": 11,
+          "nombre": "movimiento 2",
+          "fecha": "20/04/2004",
+          "monto": "3132"
+        },
+        {
+          "id": 12,
+          "nombre": "movimiento 4",
+          "fecha": "21/04/2004",
+          "monto": "123"
+        },
+        {
+          "id": 13,
+          "nombre": "movimiento 6",
+          "fecha": "22/04/2004",
+          "monto": "200"
+        },
+        {
+          "id": 14,
+          "nombre": "movimiento 8",
+          "fecha": "23/04/2004",
+          "monto": "100"
+        },
+        {
+          "id": 15,
+          "nombre": "movimiento 10",
+          "fecha": "24/04/2004",
+          "monto": "3132"
+        },
+        {
+          "id": 16,
+          "nombre": "movimiento 12",
+          "fecha": "25/04/2004",
+          "monto": "123"
+        },
+        {
+          "id": 17,
+          "nombre": "movimiento 14",
+          "fecha": "26/04/2004",
+          "monto": "200"
+        },
+        {
+          "id": 18,
+          "nombre": "movimiento 16",
+          "fecha": "27/04/2004",
+          "monto": "100"
+        },
+        {
+          "id": 19,
+          "nombre": "movimiento 18",
+          "fecha": "28/04/2004",
+          "monto": "3132"
+        },
+        {
+          "id": 20,
+          "nombre": "movimiento 20",
+          "fecha": "29/04/2004",
+          "monto": "123"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "movimientos": [
+        {
+          "id": 21,
+          "nombre": "movimiento 21",
+          "fecha": "30/04/2004",
+          "monto": "200"
+        },
+        {
+          "id": 22,
+          "nombre": "movimiento 23",
+          "fecha": "01/05/2004",
+          "monto": "100"
+        },
+        {
+          "id": 23,
+          "nombre": "movimiento 25",
+          "fecha": "02/05/2004",
+          "monto": "3132"
+        },
+        {
+          "id": 24,
+          "nombre": "movimiento 27",
+          "fecha": "03/05/2004",
+          "monto": "123"
+        },
+        {
+          "id": 25,
+          "nombre": "movimiento 29",
+          "fecha": "04/05/2004",
+          "monto": "200"
+        },
+        {
+          "id": 26,
+          "nombre": "movimiento 31",
+          "fecha": "05/05/2004",
+          "monto": "100"
+        },
+        {
+          "id": 27,
+          "nombre": "movimiento 33",
+          "fecha": "06/05/2004",
+          "monto": "3132"
+        },
+        {
+          "id": 28,
+          "nombre": "movimiento 35",
+          "fecha": "07/05/2004",
+          "monto": "123"
+        },
+        {
+          "id": 29,
+          "nombre": "movimiento 37",
+          "fecha": "08/05/2004",
+          "monto": "200"
+        },
+        {
+          "id": 30,
+          "nombre": "movimiento 39",
+          "fecha": "09/05/2004",
+          "monto": "100"
+        }
+      ]
+    }
+  ]
+}

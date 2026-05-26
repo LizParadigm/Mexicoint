@@ -1,0 +1,16 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.menu{
+    -fx-background-color:-color-blanco-normal;
+}
+
+.menu-producto{
+    -fx-background-color:-color-blanco-opaco-1;
+    -fx-border-radius:0px;
+    -fx-background-radius:0px;
+    -fx-alignment:CENTER_LEFT;
+    -fx-padding: 5 10;
+    -fx-cursor: hand;
+}

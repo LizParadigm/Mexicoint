@@ -11,5 +11,7 @@ module bylizzy.mexicoint {
 
     opens bylizzy.mexicoint to javafx.fxml;
     opens bylizzy.mexicoint.controllers to javafx.fxml;
-    opens bylizzy.mexicoint.models to com.fasterxml.jackson.databind;
+    opens bylizzy.mexicoint.data.dto.cliente to com.fasterxml.jackson.databind;
+    opens bylizzy.mexicoint.models to com.fasterxml.jackson.databind, javafx.base;
+    opens bylizzy.mexicoint.data.dto.cliente.deserializers to com.fasterxml.jackson.databind;
 }

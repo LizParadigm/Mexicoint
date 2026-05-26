@@ -1,141 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.shape.SVGPath?>
 
-<HBox id="id_iniciar_sesion" alignment="CENTER" minHeight="-Infinity" minWidth="1000.0" spacing="100.0" styleClass="background-login" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <StackPane id="id-contenedor-izq" HBox.hgrow="ALWAYS">
-         <children>
-            <ImageView id="id_img_logo" fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/logo.png" />
-               </image>
-            </ImageView>
-         </children>
-      </StackPane>
-      <VBox id="id_contenedor_componente" alignment="CENTER">
-         <children>
-            <Pane id="id_componente_iniciar_sesion" nodeOrientation="LEFT_TO_RIGHT">
-               <children>
-                  <VBox id="id_contenedor_iniciar_sesion" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="412.0" spacing="36.0" styleClass="base-contenedor">
-                     <children>
-                        <Label id="id_titulo" text="Bienvenido">
-                           <font>
-                              <Font name="System Bold" size="48.0" />
-                           </font>
-                        </Label>
-                        <VBox id="id_contenedor_datos" prefHeight="145.0" prefWidth="365.0" spacing="14.0">
-                           <children>
-                              <GridPane id="id_data" alignment="BOTTOM_LEFT" hgap="5.0" vgap="14.0">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="10.0" prefWidth="100.5" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="10.0" prefWidth="274.5" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints maxHeight="37.0" minHeight="37.0" prefHeight="37.0" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="37.0" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="49.5" minHeight="37.0" prefHeight="49.5" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="37.0" minHeight="12.5" prefHeight="12.5" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <children>
-                                    <Label id="id_label_curp" text="CURP">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField id="id_input_curp" promptText="VEGA780615HDFLML08" styleClass="base-input" GridPane.columnIndex="1">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </TextField>
-                                    <Label id="id_error_curp" styleClass="label-error" text="Este es un mensaje de error generico para pruebas." GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <Label id="id_label_contrasena" text="Contraseña" GridPane.rowIndex="2">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <PasswordField id="id_input_contrasena" promptText="************" styleClass="base-input" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </PasswordField>
-                                    <Label id="id_error_contrasena" styleClass="label-error" text="Este es un mensaje de error generico para pruebas." GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                 </children>
-                              </GridPane>
-                              <TextFlow id="id_contenedor_recuperar_cuenta" prefHeight="200.0" prefWidth="200.0" textAlignment="CENTER">
-                                 <children>
-                                    <Text id="id-mensaje" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Has olvidado tu contraseña? ¡No te preocupes! Haz click ">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Text>
-                                    <Text id="id_recuperar-cuenta" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="base-text-link" text="aqui">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Text>
-                                    <Text id="id-mensaje" strokeType="OUTSIDE" strokeWidth="0.0" text=".">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Text>
-                                 </children>
-                              </TextFlow>
-                           </children>
-                        </VBox>
-                        <GridPane id="id_contenedor_botones" alignment="CENTER" hgap="30.0">
-                           <columnConstraints>
-                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <Button id="id_registrar" mnemonicParsing="false" styleClass="base-boton" text="Registrarme">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                              <Button id="id_entrar" mnemonicParsing="false" styleClass="base-boton, base-boton-verde" text="Iniciar sesion" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </GridPane>
-                     </children>
-                     <padding>
-                        <Insets bottom="36.0" left="15.0" right="15.0" top="36.0" />
-                     </padding>
-                  </VBox>
-               </children>
-            </Pane>
-         </children>
-      </VBox>
-   </children>
-   <padding>
-      <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
-   </padding>
-   <stylesheets>
-      <URL value="@../css/styles.css" />
-      <URL value="@../css/iniciarsesion.css" />
-   </stylesheets>
-</HBox>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300" prefWidth="500" styleClass="card" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+    
+    <children>
+        <Pane prefHeight="300" prefWidth="500">
+            <children>
+                <SVGPath content="
+    M 0 1
+    Q 120 280 250 240
+    T 500 260
+    L 500 300
+    L 0 300
+    Z" styleClass="wave" />
+            </children>
+        </Pane>
+    </children>
+    <stylesheets>
+        <URL value="@styles.css" />
+        <URL value="@../css/pruebas.css" />
+    </stylesheets>
+</StackPane>

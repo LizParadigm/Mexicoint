@@ -20,7 +20,7 @@
       <URL value="@../css/solicitarproducto.css" />
    </stylesheets>
    <children>
-      <Rectangle fx:id="overlay" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" onMouseClicked="#overlay" stroke="BLACK" strokeType="INSIDE" styleClass="base-overlay" width="200.0" />
+      <Rectangle fx:id="overlay" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" onMouseClicked="#cerrarSolicitud" stroke="BLACK" strokeType="INSIDE" styleClass="base-overlay" width="200.0" />
       <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="500.0" spacing="36.0" styleClass="base-contenedor">
          <children>
             <VBox alignment="TOP_RIGHT">

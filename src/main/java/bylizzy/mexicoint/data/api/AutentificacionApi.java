@@ -2,8 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package bylizzy.mexicoint.data.dto.autentificacion;
+package bylizzy.mexicoint.data.api;
 
+import bylizzy.mexicoint.data.dto.autentificacion.CambiarContrasenaRequestDTO;
+import bylizzy.mexicoint.data.dto.autentificacion.CambiarContrasenaResponseDTO;
+import bylizzy.mexicoint.data.dto.autentificacion.ComprobarCodigoRequestDTO;
+import bylizzy.mexicoint.data.dto.autentificacion.ComprobarCodigoResponseDTO;
+import bylizzy.mexicoint.data.dto.autentificacion.ComprobarCurpRequestDTO;
+import bylizzy.mexicoint.data.dto.autentificacion.ComprobarCurpResponseDTO;
+import bylizzy.mexicoint.data.dto.autentificacion.CrearClienteRequestDTO;
+import bylizzy.mexicoint.data.dto.autentificacion.CrearClienteResponseDTO;
+import bylizzy.mexicoint.data.dto.autentificacion.SolicitarAccesoRequestDTO;
+import bylizzy.mexicoint.data.dto.autentificacion.SolicitarAccesoResponseDTO;
 import bylizzy.mexicoint.utils.RutasApiService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

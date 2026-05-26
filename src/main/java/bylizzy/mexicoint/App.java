@@ -24,7 +24,10 @@ public class App extends Application {
 
         //System.out.println(RutasService.MODULO_AUTENTIFICACION);
         this.escena = new Scene(
-                escenario.cargarFXML(RutasService.MODULO_AUTENTIFICACION) ,
+                //MODULO AUTENTIFICACION
+                //escenario.cargarFXML(RutasService.MODULO_AUTENTIFICACION) ,
+                //MODULO USUARIO
+                escenario.cargarFXML(RutasService.MODULO_USUARIO) ,
                 escenario.getWidth() ,
                 escenario.getHeight()
         );

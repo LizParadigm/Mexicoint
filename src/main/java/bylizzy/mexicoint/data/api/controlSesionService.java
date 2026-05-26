@@ -2,16 +2,16 @@ package bylizzy.mexicoint.data.api;
 
 public class controlSesionService {
 
-    private static String token;
+    private static String toksen;
     private static String rol;
 
     public controlSesionService(String token ,String rol) {
-        this.token = token;
+        this.toksen = token;
         this.rol = rol;
     }
 
     public static String getToken() {
-        return token;
+        return toksen;
     }
 
     public static String getRol() {
@@ -19,7 +19,7 @@ public class controlSesionService {
     }
 
     public void limpiar() {
-        this.token = null;
+        this.toksen = null;
         this.rol = null;
     }
 

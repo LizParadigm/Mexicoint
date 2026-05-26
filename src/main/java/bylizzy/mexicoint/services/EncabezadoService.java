@@ -4,32 +4,14 @@
  */
 package bylizzy.mexicoint.services;
 
-import bylizzy.mexicoint.data.api.ClienteApi;
-import bylizzy.mexicoint.models.Producto;
-import bylizzy.mexicoint.models.Productos;
-import bylizzy.mexicoint.models.ProductosSolicitables;
+import bylizzy.mexicoint.interfaces.MenuLateralListener;
 
 /**
  *
  * @author La rana
  */
 public class EncabezadoService {
-    //inicializamos variables de pagina
 
-    private Productos productosPoseidos;
-    private ProductosSolicitables productosSolicitables;
-
-    public EncabezadoService() {
-        this.productosPoseidos = ClienteApi.solicitarProducto();
-     //   this.productosSolicitables= ClienteApi.solicitarProductosSolicitables();
-    }
-
-    public Productos getProductosPoseidos() {
-        return productosPoseidos;
-    }
-
-    public ProductosSolicitables getProductosSolicitables() {
-        return productosSolicitables;
-    }
+    
 
 }

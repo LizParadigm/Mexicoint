@@ -1,0 +1,55 @@
+{
+    "productos": [
+        {
+            "id": 1,
+            "producto": {
+                "tipo": "Debito",
+                "colorPrincipal": "81D8F0",
+                "colorSecundario": "61A2B4"
+            },
+            "nombre": "Tarjetad de debito",
+            "titular": "Lizbeth Rendon Calvario",
+            "clave": "1234567890123456",
+            "saldo": {
+                "actual": 123123123032.00,
+                "limite": 200000000000.00
+            },
+            "expira": "02/40"
+        },
+        {
+            "id": 2,
+            "producto": {
+                "tipo": "Debito",
+                "colorPrincipal": "81D8F0",
+                "colorSecundario": "61A2B4"
+            },
+            "nombre": "Tarjetad de debito VIP",
+            "titular": "Lizbeth Rendon Calvario",
+            "clave": "1434537820123456",
+            "saldo": {
+                "actual": 1231233032.00,
+                "limite": 2000000000.00
+            },
+            "expira": "10/41"
+        },
+        {
+            "id": 3,
+            "producto": {
+                "tipo": "Credito",
+                "colorPrincipal": "81D8F0",
+                "colorSecundario": "61A2B4"
+            },
+            "nombre": "Tarjetad de credito",
+            "titular": "Lizbeth Rendon Calvario",
+            "clave": "1434537820123456",
+            "credito": {
+                "limite": 5000.00,
+                "disponible": 5000.00,
+                "deuda": 0.00,
+                "fechaPago": "2026-05-05",
+                "fechaCorte": "2026-06-25"
+            },
+            "expira": "11/42"
+        }
+    ]
+}

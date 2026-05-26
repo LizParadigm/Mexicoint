@@ -1,0 +1,18 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 21 may. 2026, 16:06:25
+    Author     : La rana
+*/
+
+.card {
+    -fx-background-color: #6FAEC2;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+.wave {
+    -fx-fill: #5A99AD;
+}

@@ -12,14 +12,16 @@ import javafx.scene.shape.Rectangle;
 public class ContenidoHijo extends ManejarEscenario {
 
     public FXMLLoader cargarFXMLHijo(String fxml) throws IOException {
+        System.out.println(fxml);
         FXMLLoader cargador = new FXMLLoader(getClass().getResource(fxml));
         cargador.load();
+        
         return cargador;
     }
 
     public FXMLLoader cargarHijo(StackPane nodoPadre ,String fxml) throws IOException {
+        
         FXMLLoader nodoHijoCargado = cargarFXMLHijo(fxml);
-
         Parent nodoHijo = nodoHijoCargado.getRoot();
 
         nodoPadre.getChildren().add(nodoHijo);
@@ -30,6 +32,7 @@ public class ContenidoHijo extends ManejarEscenario {
         nodoPadre.getChildren().clear();
     }
 
+    
     public void overlay(Rectangle overlay) {
         Platform.runLater(() -> {
             Scene scene = overlay.getScene();
@@ -38,5 +41,5 @@ public class ContenidoHijo extends ManejarEscenario {
             overlay.heightProperty().bind(scene.heightProperty());
         });
     }
-
+    
 }

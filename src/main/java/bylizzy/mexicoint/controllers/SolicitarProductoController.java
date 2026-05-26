@@ -6,6 +6,8 @@ package bylizzy.mexicoint.controllers;
 
 import bylizzy.mexicoint.App;
 import bylizzy.mexicoint.data.api.ClienteApi;
+import bylizzy.mexicoint.interfaces.SolicitarProductoListener;
+import bylizzy.mexicoint.models.ContenidoHijo;
 import bylizzy.mexicoint.models.Documento;
 import bylizzy.mexicoint.services.SolicitarProductoService;
 import java.net.URL;
@@ -66,25 +68,48 @@ public class SolicitarProductoController implements Initializable {
     @FXML
     private Rectangle overlay;
 
+    //borrar
+    
     /*variables de control*/
+    SolicitarProductoService control = new SolicitarProductoService();
+    ContenidoHijo controlHijo = new ContenidoHijo();
+    
+    private SolicitarProductoListener solicitud;
+    
+    public void setSolicitud(SolicitarProductoListener solicitud){
+        System.out.println("setSolicitud");
+        this.solicitud=solicitud;
+    }
+    
     private StackPane contenedorPrincipal;
     private String idProducto;
 
-    SolicitarProductoService control = new SolicitarProductoService();
     PauseTransition pausa = new PauseTransition(Duration.seconds(3));
 
     public SolicitarProductoController() {
     }
 
+    @Override
+    public void initialize(URL url ,ResourceBundle rb) {
 
-    /*funciones de botones y acciones*/
+        Platform.runLater(() -> {
+            controlHijo.overlay(overlay);
+        });
+
+        for (Documento doc : control.getDocumentos().getDocumentos()) {
+            listarDocumentos(doc);
+        }
+        
+        control.cambiarVisibilidad(contenedor_mensaje_2 ,false);
+    }
+    
+    //BOTONES Y EVENTOS
     @FXML
     void Aceptar(ActionEvent event) {
-        ClienteApi.obtenerProducto(idProducto);
-        cambiarVisibilidad(contenedor_mensaje_1 ,false);
-        cambiarVisibilidad(contenedor_mensaje_2 ,true);
-        cambiarVisibilidad(contenedor_botones ,false);
-        cambiarVisibilidad(icon_cerrar ,false);
+        control.cambiarVisibilidad(contenedor_mensaje_1 ,false);
+        control.cambiarVisibilidad(contenedor_mensaje_2 ,true);
+        control.cambiarVisibilidad(contenedor_botones ,false);
+        control.cambiarVisibilidad(icon_cerrar ,false);
 
         pausa.setOnFinished(e -> {
             cerrarSolicitud();
@@ -104,64 +129,52 @@ public class SolicitarProductoController implements Initializable {
     }
 
     @FXML
-    private void overlay(MouseEvent event) {
+    private void cerrarSolicitud(MouseEvent event) {
         cerrarSolicitud();
     }
-
-    @Override
-    public void initialize(URL url ,ResourceBundle rb) {
-
-        Platform.runLater(() -> {
-            Scene scene = overlay.getScene();
-            overlay.widthProperty().bind(scene.widthProperty());
-            overlay.heightProperty().bind(scene.heightProperty());
-        });
-
-        cambiarVisibilidad(contenedor_mensaje_2 ,false);
-
-        for (Documento doc : control.getDocumentos().getDocumentos()) {
-            listarDocumentos(doc);
-        }
-        // TODO
-    }
-
+    
+    //FUNCIONES
     private void listarDocumentos(Documento doc) {
         Label lb = new Label();
         lb.setText("• " + doc.getNombre() + ".");
         contenedor_documentos.getChildren().add(lb);
-
     }
-
-    private void cambiarVisibilidad(Node nodo ,boolean estado) {
-        nodo.setVisible(estado);
-        nodo.setManaged(estado);
-    }
-
+    
     private void cerrarSolicitud() {
+        this.solicitud.cancelarSolicitud();
         System.out.println("Solicitud cancelada, vista solicitarProducto.fxml cerrada");
-        contenedorPrincipal.setVisible(false);
-        App.borrarFXML(contenedorPrincipal);
 
     }
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+
+    
 
     // comunicaciones
-    public StackPane getContenedorPrincipal() {
-        return contenedorPrincipal;
-    }
+//    public StackPane getContenedorPrincipal() {
+//        return contenedorPrincipal;
+//    }
 
-    public void setContenedorPrincipal(StackPane contenedorPrincipal) {
-        this.contenedorPrincipal = contenedorPrincipal;
-    }
+//    public void setContenedorPrincipal(StackPane contenedorPrincipal) {
+//        this.contenedorPrincipal = contenedorPrincipal;
+//    }
 
-    public void setProductoId(String idProducto) {
-        this.idProducto = idProducto;
-        control.setIdProducto(idProducto);
-    }
-
-    public void setProductoNombre(String nombreProducto) {
-        control.setNombreProducto(nombreProducto);
-        texto_nombre_producto_1.setText(control.getNombreProducto());
-        texto_nombre_producto_2.setText(control.getNombreProducto());
+    public void cofigDatosProducto(String id, String nombre){
+        control.setIdProducto(id);
+        control.setNombreProducto(nombre);
+        
+        texto_nombre_producto_1.setText(nombre);
+        texto_nombre_producto_2.setText(nombre);
+        
     }
 
 }

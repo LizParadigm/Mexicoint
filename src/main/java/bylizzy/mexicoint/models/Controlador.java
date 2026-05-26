@@ -7,6 +7,7 @@ package bylizzy.mexicoint.models;
 import java.util.function.Predicate;
 import javafx.animation.FadeTransition;
 import javafx.scene.Node;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextFormatter;
 import javafx.util.Duration;
 
@@ -52,6 +53,17 @@ public class Controlador {
 
         fadeOut.play();
 
+    }
+    
+    public void ajustarAlturaTabla(TableView tabla, int numFilas){
+        double altoCabecera = 27;
+        double altoFila = 24;
+        double altura = altoCabecera+(altoFila*numFilas);
+        tabla.setFixedCellSize(altoFila);
+        tabla.setPrefHeight(altura);
+        tabla.setMinHeight(altura);
+        tabla.setMaxHeight(altura);
+        
     }
 
 }

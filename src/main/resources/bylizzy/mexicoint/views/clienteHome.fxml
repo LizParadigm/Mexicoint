@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" styleClass="p2" stylesheets="@../css/clientehome.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bylizzy.mexicoint.controllers.ClienteHomeController">
+   <children>
+      <StackPane fx:id="contenedor_producto_seleccionado" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="p3" />
+   </children>
+</VBox>

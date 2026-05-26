@@ -4,7 +4,7 @@
  */
 package bylizzy.mexicoint.services;
 
-import bylizzy.mexicoint.data.dto.autentificacion.AutentificacionApi;
+import bylizzy.mexicoint.data.api.AutentificacionApi;
 import bylizzy.mexicoint.data.dto.autentificacion.CambiarContrasenaResponseDTO;
 import bylizzy.mexicoint.data.dto.autentificacion.ComprobarCodigoResponseDTO;
 import bylizzy.mexicoint.data.dto.autentificacion.ComprobarCurpResponseDTO;

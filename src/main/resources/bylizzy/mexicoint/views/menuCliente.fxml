@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+
+<StackPane alignment="TOP_LEFT" stylesheets="@../css/menucliente.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bylizzy.mexicoint.controllers.MenuClienteController">
+   <children>
+      <Rectangle fx:id="overlay" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" onMouseClicked="#cerrarMenuLateral" stroke="BLACK" strokeType="INSIDE" styleClass="base-overlay" width="200.0" />
+      <VBox fx:id="menu_lateral" maxWidth="300.0" spacing="4.0" styleClass="menu">
+         <children>
+            <VBox fx:id="contenedor_productos_obtenidos" spacing="4.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mis productos" />
+               </children>
+            </VBox>
+            <Separator />
+            <VBox fx:id="contenedor_productos_solicitables" spacing="4.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Solicitar" />
+                  <VBox fx:id="contenedor_productos_debito" spacing="4.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Producto debito" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="contenedor_productos_credito" spacing="4.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Producto credito" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <Separator prefWidth="200.0" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+   </children>
+</StackPane>

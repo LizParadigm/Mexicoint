@@ -10,14 +10,14 @@ package bylizzy.mexicoint.models;
  */
 public class Producto {
 
-    private String id;
+    private int id;
     private String tipo;
     private String nombre;
 
     public Producto() {
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -28,6 +28,20 @@ public class Producto {
     public String getNombre() {
         return nombre;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
 
     @Override
     public String toString() {

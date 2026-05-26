@@ -28,7 +28,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -color-blanco-limpio: #FFFFFF;
     -color-blanco-normal:#F1F1F1;
     -color-blanco-opaco-1:#E4E4E4;
-    -color-blanco_opaco-2:#C6C6C6;
+    -color-blanco-opaco-2:#C6C6C6;
+    -color-blanco-opaco-3:#D9D9D9;
     /*rojos*/
     -color-rojo-limpio:#FF0000;
     -color-rojo-normal:#C90000;
@@ -107,7 +108,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-radius:1000px;
     -fx-pref-width:100px;
     -fx-pref-height:100px;
-    
+
 }
 .base-boton-icon:hover{
     -fx-background-color:rgba(0,0,0,0.1);
@@ -165,6 +166,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 /* efecto */
 
+/*
+ * TARJETA
+*/
+
+/* estilo */
+.base-tarjeta{
+    -fx-background-color: linear-gradient(
+        to bottom,
+        #81D8F0 0%,
+        #61A2B4 100%
+        );
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+
+}
+
+.base-tarjeta-fondo{
+    -fx-fill: #61A2B4;
+}
+/* efecto */
+
+/* variantes */
+
+
 
 
 /*
@@ -193,12 +218,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 /* Texto normal: texto normal con tamaño ligeramente grande. */
 .base-text-normal-1{
-   -fx-font-size:16px;
+    -fx-font-size:16px;
 }
 
 .base-text-normal-2{
-   -fx-font-size:16px;
-   -fx-font-weight:bold;
+    -fx-font-size:16px;
+    -fx-font-weight:bold;
 }
 
 /*
@@ -224,6 +249,41 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-fill:rgba(0,0,0,.5);
     -fx-background-color:rgba(0,0,0,.5);
     -fx-stoke-width:0px;
+}
+
+/*
+ *TABLAS
+*/
+
+/* tabla */
+.base-tabla{
+    -fx-background-color: transparent;
+    -fx-padding: 0px;
+    -fx-border-color:black;
+    -fx-border-width:1px;
+}
+
+/* tabla - relleno */
+.base-tabla .filler{
+    -fx-background-coolor:-color-blanco-opaco-3;
+}
+
+/* enbabezado - general - individual*/
+.base-tabla .column-header-background{
+    -fx-background-color: black;
+    -fx-border-color:transparent transparent black transparent;
+    -fx-border-width:0px 0px 1px 0px;
+}
+
+/* encabezado - individual */
+.base-tabla  .column-header{
+    -fx-background-color: -color-blanco-opaco-3;
+}
+
+/* encabezado - fila */
+.base-tabla .table-row-cell{
+    -fx-border-color:transparent transparent black transparent;
+    -fx-border-width:0px 0px 1px 0px;
 }
 
 

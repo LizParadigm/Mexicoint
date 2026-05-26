@@ -1,0 +1,22 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.contenedor-producto{
+    -fx-margin:10px;
+}
+
+.base-contenedor{
+    -fx-padding:10px;
+    -fx-background-color: -color-blanco-normal;
+    -fx-background-radius:3px;
+    -fx-border-color:black;
+    -fx-border-radius:3px;
+    -fx-border-width:0.5px;
+    -fx-effect: none;
+}
+
+.base-boton-icon{
+    -fx-pref-width:20px;
+    -fx-pref-height:20px;
+}

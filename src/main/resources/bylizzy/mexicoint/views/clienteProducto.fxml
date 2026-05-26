@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<VBox styleClass="base-contenedor" stylesheets="@../css/clienteproducto.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bylizzy.mexicoint.controllers.ClienteProductoController">
+      <children>
+          <Label styleClass="base-text-subtitulo-2" text="Producto" />
+          <HBox alignment="CENTER" spacing="46.0" styleClass="contenedor-producto">
+              <children>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" spacing="15.0" styleClass="base-contenedor">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <children>
+                        <StackPane fx:id="sp_tarjeta_1" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="264.0" prefWidth="447.0" styleClass="base-tarjeta">
+                            <children>
+                                <SVGPath content="M 0,350 Q 100,380 223.5,345 T 447,380 L 447,420 L 0,420 Z" styleClass="base-tarjeta-fondo" StackPane.alignment="BOTTOM_CENTER">
+                                    <StackPane.margin>
+                                        <Insets bottom="20.0" />
+                                    </StackPane.margin>
+                                </SVGPath>
+                                <VBox fx:id="contenedor_producto_datos1" spacing="10.0">
+                                    <children>
+                                        <Label fx:id="lbl_producto_nombre" styleClass="base-text-subtitulo-2" text="[nombre del produco]" />
+                                        <Label fx:id="lbl_producto_saldo" styleClass="base-text-subtitulo-2" text="[saldo del producto]" />
+                                        <Label fx:id="lbl_producto_propietario" styleClass="base-text-normal-1" text="[nombre del propietarario]" />
+                                        <HBox spacing="5.0" VBox.vgrow="ALWAYS">
+                                            <children>
+                                                <Label fx:id="lbl_producto_num_cuenta" styleClass="base-text-normal-1" text="[numbero de cuenta]" />
+                                    <Button fx:id="btn_copiar_clave" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#copiarClave" prefHeight="10.0" prefWidth="10.0" styleClass="base-boton-icon">
+                                       <graphic>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                          <image>
+                                                              <Image url="@../images/copiar.png" />
+                                                          </image>
+                                                      </ImageView>
+                                       </graphic>
+                                    </Button>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="TOP_RIGHT" spacing="5.0" styleClass="base-text-normal-1">
+                                            <children>
+                                                <Button fx:id="btn_transferir" mnemonicParsing="false" onAction="#transferir" styleClass="base-boton" text="Transferir" />
+                                                <Button fx:id="btn_detalles" mnemonicParsing="false" onAction="#mostrarDetalles" styleClass="base-boton" text="Ver detalles" />
+                                                <Button fx:id="btn_salud_financiera" mnemonicParsing="false" onAction="#saludFinanciera" styleClass="base-boton" text="Salud financiera" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                    <StackPane.margin>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </StackPane.margin>
+                                </VBox>
+                            </children>
+                        </StackPane>
+                  <StackPane fx:id="sp_tarjeta_2" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="264.0" prefWidth="447.0" styleClass="base-tarjeta">
+                     <children>
+                        <SVGPath content="M 0,350 Q 100,380 223.5,345 T 447,380 L 447,420 L 0,420 Z" styleClass="base-tarjeta-fondo" StackPane.alignment="BOTTOM_CENTER">
+                           <StackPane.margin>
+                              <Insets bottom="20.0" />
+                           </StackPane.margin>
+                        </SVGPath>
+                        <VBox fx:id="contenedor_producto_datos2" nodeOrientation="LEFT_TO_RIGHT" spacing="10.0">
+                           <children>
+                              <Label fx:id="lbl_producto_tipo" styleClass="base-text-subtitulo-2" text="[tipo de producto]" />
+                              <HBox spacing="5.0" styleClass="base-text-normal-1">
+                                 <children>
+                                    <TextFlow prefWidth="80.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CV: " />
+                                          <Text fx:id="txt_producto_cv" strokeType="OUTSIDE" strokeWidth="0.0" text="[cv] " />
+                                       </children>
+                                    </TextFlow>
+                                    <Button fx:id="btn_ver_cv" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#verCv" prefHeight="10.0" prefWidth="10.0" styleClass="base-boton-icon">
+                                       <graphic>
+                                          <ImageView fx:id="img_btn_cv_visibilidad" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/verfalse.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Text fx:id="txt_cv_temporizador" strokeType="OUTSIDE" strokeWidth="0.0" text="[tiempo]" />
+                                 </children>
+                              </HBox>
+                              <HBox spacing="5.0" styleClass="base-text-normal-1">
+                                 <children>
+                                    <TextFlow>
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de vencimiento: " />
+                                          <Text fx:id="txt_producto_fecha_vencimiento" strokeType="OUTSIDE" strokeWidth="0.0" text="[fecha de expiracion del producto] " />
+                                       </children>
+                                    </TextFlow>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <StackPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </StackPane.margin>
+                        </VBox>
+                     </children>
+                  </StackPane>
+               </children>
+            </VBox>
+                  <VBox fx:id="contenedor_ingresos" spacing="25.0" styleClass="base-contenedor" HBox.hgrow="ALWAYS">
+                      <children>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                                  <Label alignment="TOP_LEFT" styleClass="base-text-subtitulo-2" text="Ingresos" />
+                                  <Button fx:id="btn_ingresos" alignment="CENTER" mnemonicParsing="false" onAction="#verIngresos" styleClass="base-boton" text="Ver mas" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                          <TableView fx:id="tabla_ingresos" styleClass="base-tabla">
+                              <columns>
+                                  <TableColumn fx:id="tabla_ingresos_movimiento" prefWidth="200.0" text="Movimiento" />
+                                  <TableColumn fx:id="tabla_ingresos_fecha" prefWidth="75.0" text="Fecha" />
+                                  <TableColumn fx:id="tabla_ingresos_monto" prefWidth="100.0" text="Monto" />
+                              </columns>
+                          </TableView>
+                      </children>
+                  </VBox>
+                  <VBox fx:id="contenedor_gastos" spacing="25.0" styleClass="base-contenedor" HBox.hgrow="SOMETIMES">
+                      <children>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                                  <Label styleClass="base-text-subtitulo-2" text="Gastos" GridPane.halignment="LEFT" />
+                                  <Button fx:id="btn_gastos" mnemonicParsing="false" onAction="#verGastos" styleClass="base-boton" text="Ver mas" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+                     </children>
+                  </GridPane>
+                          <TableView fx:id="tabla_gastos" styleClass="base-tabla">
+                              <columns>
+                                  <TableColumn fx:id="tabla_gastos_movimiento" prefWidth="200.0" text="Movimiento" />
+                                  <TableColumn fx:id="tabla_gastos_fecha" prefWidth="75.0" text="Fecha" />
+                                  <TableColumn fx:id="tabla_gastos_monto" prefWidth="100.0" text="Monto" />
+                              </columns>
+                          </TableView>
+                      </children>
+                  </VBox>
+              </children>
+          </HBox>
+      </children>
+  </VBox>

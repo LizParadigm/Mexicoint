@@ -1,0 +1,199 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "movimientos": [
+        {
+          "id": 31,
+          "nombre": "movimiento 41",
+          "fecha": "10/05/2004",
+          "monto": "-200"
+        },
+        {
+          "id": 32,
+          "nombre": "movimiento 43",
+          "fecha": "11/05/2004",
+          "monto": "-100"
+        },
+        {
+          "id": 33,
+          "nombre": "movimiento 45",
+          "fecha": "12/05/2004",
+          "monto": "-3132"
+        },
+        {
+          "id": 34,
+          "nombre": "movimiento 47",
+          "fecha": "13/05/2004",
+          "monto": "-123"
+        },
+        {
+          "id": 35,
+          "nombre": "movimiento 49",
+          "fecha": "14/05/2004",
+          "monto": "-200"
+        },
+        {
+          "id": 36,
+          "nombre": "movimiento 51",
+          "fecha": "15/05/2004",
+          "monto": "-100"
+        },
+        {
+          "id": 37,
+          "nombre": "movimiento 53",
+          "fecha": "16/05/2004",
+          "monto": "-3132"
+        },
+        {
+          "id": 38,
+          "nombre": "movimiento 55",
+          "fecha": "17/05/2004",
+          "monto": "-123"
+        },
+        {
+          "id": 39,
+          "nombre": "movimiento 57",
+          "fecha": "18/05/2004",
+          "monto": "-200"
+        },
+        {
+          "id": 40,
+          "nombre": "movimiento 59",
+          "fecha": "19/05/2004",
+          "monto": "-100"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "movimientos": [
+        {
+          "id": 41,
+          "nombre": "movimiento 42",
+          "fecha": "20/05/2004",
+          "monto": "-3132"
+        },
+        {
+          "id": 42,
+          "nombre": "movimiento 44",
+          "fecha": "21/05/2004",
+          "monto": "-123"
+        },
+        {
+          "id": 43,
+          "nombre": "movimiento 46",
+          "fecha": "22/05/2004",
+          "monto": "-200"
+        },
+        {
+          "id": 44,
+          "nombre": "movimiento 48",
+          "fecha": "23/05/2004",
+          "monto": "-100"
+        },
+        {
+          "id": 45,
+          "nombre": "movimiento 50",
+          "fecha": "24/05/2004",
+          "monto": "-3132"
+        },
+        {
+          "id": 46,
+          "nombre": "movimiento 52",
+          "fecha": "25/05/2004",
+          "monto": "-123"
+        },
+        {
+          "id": 47,
+          "nombre": "movimiento 54",
+          "fecha": "26/05/2004",
+          "monto": "-200"
+        },
+        {
+          "id": 48,
+          "nombre": "movimiento 56",
+          "fecha": "27/05/2004",
+          "monto": "-100"
+        },
+        {
+          "id": 49,
+          "nombre": "movimiento 58",
+          "fecha": "28/05/2004",
+          "monto": "-3132"
+        },
+        {
+          "id": 50,
+          "nombre": "movimiento 60",
+          "fecha": "29/05/2004",
+          "monto": "-123"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "movimientos": [
+        {
+          "id": 51,
+          "nombre": "movimiento 61",
+          "fecha": "30/05/2004",
+          "monto": "-200"
+        },
+        {
+          "id": 52,
+          "nombre": "movimiento 63",
+          "fecha": "31/05/2004",
+          "monto": "-100"
+        },
+        {
+          "id": 53,
+          "nombre": "movimiento 65",
+          "fecha": "01/06/2004",
+          "monto": "-3132"
+        },
+        {
+          "id": 54,
+          "nombre": "movimiento 67",
+          "fecha": "02/06/2004",
+          "monto": "-123"
+        },
+        {
+          "id": 55,
+          "nombre": "movimiento 69",
+          "fecha": "03/06/2004",
+          "monto": "-200"
+        },
+        {
+          "id": 56,
+          "nombre": "movimiento 71",
+          "fecha": "04/06/2004",
+          "monto": "-100"
+        },
+        {
+          "id": 57,
+          "nombre": "movimiento 73",
+          "fecha": "05/06/2004",
+          "monto": "-3132"
+        },
+        {
+          "id": 58,
+          "nombre": "movimiento 75",
+          "fecha": "06/06/2004",
+          "monto": "-123"
+        },
+        {
+          "id": 59,
+          "nombre": "movimiento 77",
+          "fecha": "07/06/2004",
+          "monto": "-200"
+        },
+        {
+          "id": 60,
+          "nombre": "movimiento 79",
+          "fecha": "08/06/2004",
+          "monto": "-100"
+        }
+      ]
+    }
+  ]
+}
