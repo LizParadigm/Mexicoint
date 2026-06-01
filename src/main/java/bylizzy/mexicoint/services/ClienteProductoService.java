@@ -20,6 +20,7 @@ import java.util.List;
 public class ClienteProductoService extends Controlador {
 
     private ProductoDetallado producto;
+    private String cv;
     private List<Movimientos> movimientosIngresos;
     private List<Movimientos> movimientosGastos;
 
@@ -32,6 +33,15 @@ public class ClienteProductoService extends Controlador {
         System.out.println(this.producto.toString());
         this.cargarMovimientos(1);
         this.cargarMovimientos(2);
+    }
+
+    public void cargarCV() {
+        this.cv = servidor.solicitarNuevoCV(this.producto.getId());
+    }
+
+    public void eliminarCV() {
+        servidor.solicitarEliminarCV(this.producto.getId());
+        this.cv="";
     }
 
     //solicitar los ultimos 7 movimientos del producto basado en el id del producto.
@@ -63,6 +73,10 @@ public class ClienteProductoService extends Controlador {
 
     public List<Movimientos> getMovimientosGastos() {
         return movimientosGastos;
+    }
+
+    public String getCV() {
+        return this.cv;
     }
 
 }

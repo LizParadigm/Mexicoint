@@ -134,11 +134,12 @@ public class ClienteProductoController implements Initializable {
 
     @FXML
     void copiarClave(ActionEvent event) {
-
+        control.portapapelesCopiar(this.lbl_producto_num_cuenta.getText());
     }
 
     @FXML
     void mostrarDetalles(ActionEvent event) {
+        this.verDatosTarjeta();
 
     }
 
@@ -169,14 +170,17 @@ public class ClienteProductoController implements Initializable {
 
     @Override
     public void initialize(URL url ,ResourceBundle rb) {
+        //producto
+        control.cambiarVisibilidad(this.sp_tarjeta_2 ,false);
+
         //las tablas deben ajustarce al tamaño maximo permitido de momento: this.tabla_ingresos y this.tabla_gastos
         tabla_ingresos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         tabla_gastos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        //el contenido de control.producto  debe mostrarse dentro de this.sp_tarjeta_1 y this.sp_tarjeta_2
-        //debe falta hacer otra variante de la caratula de this.sp_tarjeta_1 y this.sp_tarjeta_2 ya que la que hay es compatible solo con debito, faltaria credito.
 
     }
 
+    //vista producto
+    //debe falta hacer otra variante de la caratula de this.sp_tarjeta_1 y this.sp_tarjeta_2 ya que la que hay es compatible solo con debito, faltaria credito.
     private void actualizarDetalles() {
         this.actualizarproducto();
         //this.actualizarTablas();
@@ -195,8 +199,26 @@ public class ClienteProductoController implements Initializable {
         this.txt_producto_fecha_vencimiento.setText(producto.getExpira());
     }
 
+    private void verDatosTarjeta() {
+        System.out.println();
+        control.cambiarVisibilidad(this.sp_tarjeta_2 ,!this.sp_tarjeta_2.isVisible());
+    }
+
+    private void verCV() {
+        if (this.txt_producto_cv.isVisible()) {
+            this.control.cambiarVisibilidad(this.txt_producto_cv ,false);
+            this.control.eliminarCV();
+        } else {
+            this.control.cambiarVisibilidad(this.txt_producto_cv,true);
+            this.control.cargarCV();
+        }
+        this.control.getCV();
+    }
+
+    //tablas
     private void actualizarTablas() {
         this.actualizarIngresos();
+        this.actualizarGastos();
 
     }
 
@@ -204,18 +226,28 @@ public class ClienteProductoController implements Initializable {
         this.tabla_ingresos_movimiento.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         this.tabla_ingresos_fecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         this.tabla_ingresos_monto.setCellValueFactory(new PropertyValueFactory<>("monto"));
-        
+
         ObservableList<Movimientos> ingresos = FXCollections.observableArrayList(
                 control.getMovimientosIngresos()
         );
-        
+
         this.tabla_ingresos.setItems(ingresos);
-        
-        control.ajustarAlturaTabla(this.tabla_ingresos,control.getMovimientosIngresos().size());
+
+        control.ajustarAlturaTabla(this.tabla_ingresos ,control.getMovimientosIngresos().size());
     }
 
     private void actualizarGastos() {
+        this.tabla_gastos_movimiento.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        this.tabla_gastos_fecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+        this.tabla_gastos_monto.setCellValueFactory(new PropertyValueFactory<>("monto"));
 
+        ObservableList<Movimientos> gastos = FXCollections.observableArrayList(
+                control.getMovimientosGastos()
+        );
+
+        this.tabla_gastos.setItems(gastos);
+
+        control.ajustarAlturaTabla(this.tabla_gastos ,control.getMovimientosGastos().size());
     }
 
 }

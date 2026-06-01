@@ -176,6 +176,10 @@ public class ClienteApi {
         return null;
     }
 
+    public String solicitarNuevoCV(int idProducto){
+        InputStream input =ClienteApi.class.getResoirceAsStream(controlVista.)
+    }
+    
     //solicita los ultimos 7 movimientos de un producto (basado en su id del producto 
     //y relacionado al cliente), ademas recibe un int filtro:
     // 0 = sin filtro

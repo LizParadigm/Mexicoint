@@ -9,6 +9,8 @@ import javafx.animation.FadeTransition;
 import javafx.scene.Node;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.util.Duration;
 
 /**
@@ -41,7 +43,7 @@ public class Controlador {
         fadeOut.setToValue(0);
 
         fadeOut.setOnFinished(e -> {
-            
+
             nodo.setOpacity(0);
             FadeTransition fadeIn = new FadeTransition(Duration.millis(200) ,nodo);
             fadeIn.setFromValue(0);
@@ -54,16 +56,25 @@ public class Controlador {
         fadeOut.play();
 
     }
-    
-    public void ajustarAlturaTabla(TableView tabla, int numFilas){
+
+    public void ajustarAlturaTabla(TableView tabla ,int numFilas) {
         double altoCabecera = 27;
         double altoFila = 24;
-        double altura = altoCabecera+(altoFila*numFilas);
+        double altura = altoCabecera + (altoFila * numFilas);
         tabla.setFixedCellSize(altoFila);
         tabla.setPrefHeight(altura);
         tabla.setMinHeight(altura);
         tabla.setMaxHeight(altura);
-        
+
+    }
+
+    public void portapapelesCopiar(String texto) {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+
+        ClipboardContent content = new ClipboardContent();
+        content.putString(texto);
+
+        clipboard.setContent(content);
     }
 
 }
