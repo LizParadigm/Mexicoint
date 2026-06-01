@@ -6,11 +6,14 @@ package bylizzy.mexicoint.models;
 
 import java.util.function.Predicate;
 import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.Node;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 /**
@@ -18,6 +21,9 @@ import javafx.util.Duration;
  * @author La rana
  */
 public class Controlador {
+
+    private Timeline temporizador;
+    private int segundosRestantes;
 
     public void cambiarVisibilidad(Node nodo ,boolean estado) {
         nodo.setVisible(estado);
@@ -75,6 +81,38 @@ public class Controlador {
         content.putString(texto);
 
         clipboard.setContent(content);
+    }
+
+    public void iniciarTemporizador(Text txt_tiempo ,int duracion ,Runnable terminar) {
+        this.segundosRestantes = duracion;
+
+        actualizarText(txt_tiempo);
+
+        this.temporizador = new Timeline(
+                new KeyFrame(Duration.seconds(1) ,event -> {
+                    this.segundosRestantes--;
+
+                    actualizarText(txt_tiempo);
+
+                    if (this.segundosRestantes <= 0) {
+                        this.temporizador.stop();
+                        if (terminar != null) {
+                            terminar.run();
+                        }
+                    }
+                })
+        );
+
+        this.temporizador.setCycleCount(Timeline.INDEFINITE);
+
+        this.temporizador.play();
+    }
+
+    private void actualizarText(Text txt_tiempo) {
+        int minutos = this.segundosRestantes / 60;
+        int segundos = this.segundosRestantes % 60;
+
+        txt_tiempo.setText(String.format("%02d:%02d" ,minutos ,segundos));
     }
 
 }

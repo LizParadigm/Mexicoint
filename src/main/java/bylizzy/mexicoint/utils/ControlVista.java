@@ -31,5 +31,5 @@ public class ControlVista {
     public static String DATOS_MOVIMIENTOS_INGRESOS_PRODUCTOS = "/bylizzy/mexicoint/data/movimientosIngresosProducto.json";
     public static String DATOS_MOVIMIENTOS_GASTOS_PRODUCTOS = "/bylizzy/mexicoint/data/movimientosGastosProducto.json";
     public static String DATOS_MOVIMIENTOS_TODOS_PRODUCTOS = "/bylizzy/mexicoint/data/movimientosTodosProducto.json";
-
+    public static String DATOS_CV_CREADO = "/bylizzy/mexicoint/data/respuestaCV.json";
 }

@@ -16,6 +16,7 @@ import bylizzy.mexicoint.models.Documentos;
 import bylizzy.mexicoint.data.dto.cliente.ProductoDetalladoResponseDTO;
 import bylizzy.mexicoint.models.Productos;
 import bylizzy.mexicoint.data.dto.cliente.ProductosDetalladosResponseDTO;
+import bylizzy.mexicoint.data.dto.cliente.solicitarCvNuevoResponseDTO;
 import bylizzy.mexicoint.models.Movimientos;
 import bylizzy.mexicoint.models.ProductosResp;
 import bylizzy.mexicoint.models.ProductosSolicitables;
@@ -176,10 +177,26 @@ public class ClienteApi {
         return null;
     }
 
-    public String solicitarNuevoCV(int idProducto){
-        InputStream input =ClienteApi.class.getResoirceAsStream(controlVista.)
+    public String solicitarNuevoCV(int idProducto) {
+        InputStream input = ClienteApi.class.getResourceAsStream(ControlVista.DATOS_CV_CREADO);
+        ObjectMapper map = new ObjectMapper();
+        solicitarCvNuevoResponseDTO cvCreado;
+        try {
+            cvCreado = map.readValue(input ,solicitarCvNuevoResponseDTO.class);
+            if (cvCreado.getCv().isEmpty()) {
+                return "";
+            }
+            return cvCreado.getCv();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
-    
+
+    public void solicitarEliminarCV(int idProducto) {
+        //se manda l id del producto junto con credenciales del cliente y el servidor borra el cv
+    }
+
     //solicita los ultimos 7 movimientos de un producto (basado en su id del producto 
     //y relacionado al cliente), ademas recibe un int filtro:
     // 0 = sin filtro

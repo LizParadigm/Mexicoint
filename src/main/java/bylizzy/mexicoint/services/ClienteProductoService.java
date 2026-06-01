@@ -12,6 +12,7 @@ import bylizzy.mexicoint.models.ProductoDetallado;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
+import javafx.scene.text.Text;
 
 /**
  *
@@ -41,7 +42,7 @@ public class ClienteProductoService extends Controlador {
 
     public void eliminarCV() {
         servidor.solicitarEliminarCV(this.producto.getId());
-        this.cv="";
+        this.cv = "";
     }
 
     //solicitar los ultimos 7 movimientos del producto basado en el id del producto.

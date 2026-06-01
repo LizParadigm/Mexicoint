@@ -155,7 +155,7 @@ public class ClienteProductoController implements Initializable {
 
     @FXML
     void verCv(ActionEvent event) {
-
+        this.verCV();
     }
 
     @FXML
@@ -172,6 +172,8 @@ public class ClienteProductoController implements Initializable {
     public void initialize(URL url ,ResourceBundle rb) {
         //producto
         control.cambiarVisibilidad(this.sp_tarjeta_2 ,false);
+        control.cambiarVisibilidad(this.txt_producto_cv ,false);
+        control.cambiarVisibilidad(this.txt_cv_temporizador ,false);
 
         //las tablas deben ajustarce al tamaño maximo permitido de momento: this.tabla_ingresos y this.tabla_gastos
         tabla_ingresos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -207,12 +209,22 @@ public class ClienteProductoController implements Initializable {
     private void verCV() {
         if (this.txt_producto_cv.isVisible()) {
             this.control.cambiarVisibilidad(this.txt_producto_cv ,false);
+            this.control.cambiarVisibilidad(this.txt_cv_temporizador ,false);
+
             this.control.eliminarCV();
         } else {
-            this.control.cambiarVisibilidad(this.txt_producto_cv,true);
+            this.control.cambiarVisibilidad(this.txt_producto_cv ,true);
+            this.control.cambiarVisibilidad(this.txt_cv_temporizador ,true);
+
             this.control.cargarCV();
+            this.control.iniciarTemporizador(this.txt_cv_temporizador ,5 ,() -> {
+                this.control.cambiarVisibilidad(this.txt_producto_cv ,false);
+                this.control.cambiarVisibilidad(this.txt_cv_temporizador ,false);
+                this.control.eliminarCV();
+            });
         }
-        this.control.getCV();
+
+        this.txt_producto_cv.setText(this.control.getCV());
     }
 
     //tablas
